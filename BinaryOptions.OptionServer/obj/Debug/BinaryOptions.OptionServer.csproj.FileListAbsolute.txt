@@ -1,0 +1,12 @@
+c:\users\shahaf\documents\visual studio 2013\Projects\BinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.exe.config
+c:\users\shahaf\documents\visual studio 2013\Projects\BinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.exe
+c:\users\shahaf\documents\visual studio 2013\Projects\BinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.pdb
+c:\users\shahaf\documents\visual studio 2013\Projects\BinaryOptions\BinaryOptions.OptionServer\obj\Debug\BinaryOptions.OptionServer.csprojResolveAssemblyReference.cache
+c:\users\shahaf\documents\visual studio 2013\Projects\BinaryOptions\BinaryOptions.OptionServer\obj\Debug\BinaryOptions.OptionServer.exe
+c:\users\shahaf\documents\visual studio 2013\Projects\BinaryOptions\BinaryOptions.OptionServer\obj\Debug\BinaryOptions.OptionServer.pdb
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\obj\Debug\BinaryOptions.OptionServer.csprojResolveAssemblyReference.cache
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\obj\Debug\BinaryOptions.OptionServer.exe
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\obj\Debug\BinaryOptions.OptionServer.pdb
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.exe.config
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.exe
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.pdb
