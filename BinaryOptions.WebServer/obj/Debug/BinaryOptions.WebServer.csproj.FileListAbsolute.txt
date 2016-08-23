@@ -72,3 +72,5 @@ c:\users\shahaf\documents\visual studio 2013\Projects\BinaryOptions\BinaryOption
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.WebServer\obj\Debug\BinaryOptions.WebServer.csprojResolveAssemblyReference.cache
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.WebServer\obj\Debug\BinaryOptions.WebServer.dll
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.WebServer\obj\Debug\BinaryOptions.WebServer.pdb
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.WebServer\bin\BinaryOption.OptionServer.Contract.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.WebServer\bin\BinaryOption.OptionServer.Contract.pdb

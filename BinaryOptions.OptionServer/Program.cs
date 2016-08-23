@@ -5,10 +5,12 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Akka.Actor;
+using Akka.Configuration;
 using Akka.DI.AutoFac;
 using Akka.DI.Core;
 using Autofac;
 using BinaryOption.DAL;
+using BinaryOption.OptionServer.Contract;
 using BinaryOption.OptionServer.Contract.Events;
 using BinaryOptions.OptionServer.Handlers;
 using BinaryOptions.OptionServer.Services;
@@ -24,11 +26,29 @@ namespace BinaryOptions.OptionServer
     {
         static void Main(string[] args)
         {
-            ActorSystem actorSystem = ActorSystem.Create("OptionServer");
+            var config = ConfigurationFactory.ParseString(@"
+                akka {  
+                    actor {
+                        provider = ""Akka.Remote.RemoteActorRefProvider, Akka.Remote""
+                    }
+                    remote {
+                        helios.tcp {
+                            transport-class = ""Akka.Remote.Transport.Helios.HeliosTcpTransport, Akka.Remote""
+                            applied-adapters = []
+                            transport-protocol = tcp
+                            port = 6671
+                            hostname = localhost
+                        }
+                    }
+                }");
+
+            ActorSystem actorSystem = ActorSystem.Create("OptionServer", config);
 
             var builder = new ContainerBuilder();
 
             builder.RegisterInstance(actorSystem).SingleInstance();
+            Protocol protocol = new Protocol("OptionServer", "BinaryOptionsWebserver", 6670);
+            builder.RegisterInstance(protocol).SingleInstance();
 
             RegisterActors(builder);
             RegisterDAL(builder);

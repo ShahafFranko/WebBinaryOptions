@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Akka.Actor;
+using BinaryOption.OptionServer.Contract;
 using BinaryOption.OptionServer.Contract.Events;
 using BinaryOptions.OptionServer.Entities;
 
@@ -8,10 +9,12 @@ namespace BinaryOptions.OptionServer.Services
 {
     public class RatesService : ReceiveActor
     {
+        private readonly Protocol m_protocol;
         private IList<Instrument> m_instruments;
         
-        public RatesService()
+        public RatesService(Protocol protocol)
         {
+            m_protocol = protocol;
             m_instruments = new List<Instrument>();
             m_instruments.Add(new Instrument("EURUSD", 1.0, 2.0));
             m_instruments.Add(new Instrument("EURGBP", 1.1, 2.5));
@@ -27,7 +30,7 @@ namespace BinaryOptions.OptionServer.Services
             GenerateFakeRates();
 
             // now lets publish those fake rates to our Rates Subscriber.
-            var ratesSubscriber = Context.ActorSelection("BinaryOptions.UI/RatesSubscriber");
+            var ratesSubscriber = Context.ActorSelection(m_protocol.GenerateTcpPath("EventsListener"));
             
             foreach (Instrument instrument in m_instruments)
             {

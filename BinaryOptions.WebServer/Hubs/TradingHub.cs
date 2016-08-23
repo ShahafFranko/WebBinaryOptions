@@ -23,6 +23,7 @@ namespace BinaryOptions.WebServer.Hubs
 
         public void PushInstrument(InstrumentUpdated @event)
         {
+            Clients.All.onInstrumentUpdated(@event);
         }
     }
 }

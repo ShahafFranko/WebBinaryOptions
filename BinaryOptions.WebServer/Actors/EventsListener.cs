@@ -5,11 +5,16 @@ using System.Threading.Tasks;
 using System.Web;
 using Akka.Actor;
 using BinaryOption.OptionServer.Contract.Events;
+using BinaryOptions.WebServer.Hubs;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 
 namespace BinaryOptions.WebServer.Actors
 {
     public class EventsListener : ReceiveActor
     {
+        private TradingHub m_hub;
+
         public EventsListener()
         {
             Receive<AccountUpdated>(e => Handle(e));
@@ -18,12 +23,18 @@ namespace BinaryOptions.WebServer.Actors
 
         private void Handle(AccountUpdated accountUpdated)
         {
-            throw new NotImplementedException();
+            m_hub.PushAccount(accountUpdated);
         }
 
         private void Handle(InstrumentUpdated instrumentUpdated)
         {
-            throw new NotImplementedException();
+            m_hub.PushInstrument(instrumentUpdated);
+        }
+
+        protected override void PreStart()
+        {
+            var hubManager = new DefaultHubManager(GlobalHost.DependencyResolver);
+            m_hub = hubManager.ResolveHub("tradingHub") as TradingHub;
         }
     }
 }
