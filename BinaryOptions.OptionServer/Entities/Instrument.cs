@@ -11,7 +11,10 @@ namespace BinaryOptions.OptionServer.Entities
         public Instrument(string name, double min, double max)
         {
             Name = name;
+            Min = min;
+            Max = max;
         }
+
         public string Name { get; private set; }
         public double Min { get; private set; }
         public double Max { get; private set; }

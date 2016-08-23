@@ -8,22 +8,29 @@ namespace BinaryOptions.OptionServer.Entities
 {
     public class Position
     {
-        public Position(Instrument instrument, int amount)
+        public Position()
         {
 
         }
 
-        public Guid Id { get; set; }
-        public Guid InstrumentId { get; set; }
-        public int Amount { get; set; }
-        public DateTime OpenTime { get; set; }
-        public DateTime ExpireTime { get; set; }
-        public double OpenPrice { get; set; }
-        public double? ClosePrice { get; set; }
+        public Guid Id { get; private set; }
+        public Guid InstrumentId { get; private set; }
+        public int Amount { get; private set; }
+        public DateTime OpenTime { get; private set; }
+        public DateTime ExpireTime { get; private set; }
+        public double OpenPrice { get; private set; }
+        public double? ClosePrice { get; private set; }
+        public Direction Direction { get; private set; }
 
         public bool IsOpen() 
         {
             return ClosePrice.HasValue;
+        }
+
+        public void Close(double closePrice, DateTime expireTime)
+        {
+            ClosePrice = closePrice;
+            ExpireTime = expireTime;
         }
     }
 }

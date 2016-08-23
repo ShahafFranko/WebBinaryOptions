@@ -10,3 +10,34 @@ C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\obj\Debug\
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.exe.config
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.exe
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.pdb
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.exe.config
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.exe
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOptions.OptionServer.pdb
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Autofac.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOption.OptionServer.Contract.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Newtonsoft.Json.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\System.Collections.Immutable.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOption.OptionServer.Contract.pdb
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Autofac.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Newtonsoft.Json.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\System.Collections.Immutable.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\obj\Debug\BinaryOptions.OptionServer.csprojResolveAssemblyReference.cache
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\obj\Debug\BinaryOptions.OptionServer.exe
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\obj\Debug\BinaryOptions.OptionServer.pdb
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.DI.AutoFac.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.DI.Core.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.DI.AutoFac.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.DI.Core.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOption.DAL.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\EntityFramework.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOption.DAL.pdb
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\EntityFramework.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.Remote.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.Serialization.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Helios.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.Remote.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.Serialization.xml
