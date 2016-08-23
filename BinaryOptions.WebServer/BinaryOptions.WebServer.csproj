@@ -170,12 +170,14 @@
     <Content Include="Scripts\lib\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actors\EventsListener.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\TradingHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +196,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BinaryOption.OptionServer.Contract\BinaryOption.OptionServer.Contract.csproj">
+      <Project>{75237867-23D5-47A1-ABBC-CF3196833B06}</Project>
+      <Name>BinaryOption.OptionServer.Contract</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
