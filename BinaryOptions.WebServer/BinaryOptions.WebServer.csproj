@@ -199,6 +199,7 @@
     <Compile Include="Hubs\TradingHub.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\CreateAccountModel.cs" />
+    <Compile Include="Models\OpenPositionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

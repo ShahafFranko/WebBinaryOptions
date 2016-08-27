@@ -48,10 +48,10 @@
                         <td ng-class="instrument.trend == 'up' ? 'trend-up' : 'trend-down'">{{instrument.name}}</td>
                         <td ng-class="instrument.trend == 'up' ? 'trend-up' : 'trend-down'">{{instrument.rate}}</td>
                         <td>
-                            <span class="trend-up fa fa-thumbs-o-up"></span>
+                            <span class="trend-up fa fa-thumbs-o-up" ng-click="openHighPosition('test',instrument.name,1)"></span>
                         </td>
                         <td>
-                            <span class="trend-down fa fa-thumbs-o-down"></span>
+                            <span class="trend-down fa fa-thumbs-o-down" ng-click="openLowPosition('test',instrument.name,1)"></span>
                         </td>
                     </tr>
                 </tbody>

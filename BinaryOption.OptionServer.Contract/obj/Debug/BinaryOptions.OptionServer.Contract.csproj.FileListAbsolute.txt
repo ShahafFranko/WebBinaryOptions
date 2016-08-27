@@ -3,3 +3,8 @@
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOption.OptionServer.Contract\obj\Debug\BinaryOptions.OptionServer.Contract.csprojResolveAssemblyReference.cache
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOption.OptionServer.Contract\obj\Debug\BinaryOption.OptionServer.Contract.dll
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOption.OptionServer.Contract\obj\Debug\BinaryOption.OptionServer.Contract.pdb
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.OptionServer.Contract\bin\Debug\BinaryOption.OptionServer.Contract.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.OptionServer.Contract\bin\Debug\BinaryOption.OptionServer.Contract.pdb
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.OptionServer.Contract\obj\Debug\BinaryOptions.OptionServer.Contract.csprojResolveAssemblyReference.cache
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.OptionServer.Contract\obj\Debug\BinaryOption.OptionServer.Contract.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.OptionServer.Contract\obj\Debug\BinaryOption.OptionServer.Contract.pdb

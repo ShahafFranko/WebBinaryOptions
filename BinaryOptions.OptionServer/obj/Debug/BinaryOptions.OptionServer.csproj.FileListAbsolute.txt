@@ -41,3 +41,28 @@ C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.Remote.xml
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.xml
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.Serialization.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.DI.AutoFac.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.DI.Core.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.Remote.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Autofac.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOption.DAL.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOption.OptionServer.Contract.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\EntityFramework.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.Serialization.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Helios.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\System.Collections.Immutable.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOption.DAL.pdb
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\BinaryOption.OptionServer.Contract.pdb
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.DI.AutoFac.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.DI.Core.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Akka.Remote.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Autofac.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\EntityFramework.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.Serialization.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\System.Collections.Immutable.xml

@@ -1,5 +1,5 @@
 ﻿
-app.controller('mainController', ['$scope', 'hubProxy', function ($scope, hubProxy) {
+app.controller('mainController', ['$scope', 'hubProxy', '$http', function ($scope, hubProxy, $http) {
     
     $scope.instruments = [];
 
@@ -40,4 +40,38 @@ app.controller('mainController', ['$scope', 'hubProxy', function ($scope, hubPro
             });
         }
     };
+
+    //$scope.openUpPosition = function (amount, instrumentName) {
+    //    hub.invoke('openUpPosition', function () {
+    //        alertify.success("Position opened successfuly");
+    //    });
+    //};
+
+    $scope.openHighPosition = function (username, instrumentName, amount) {
+        $scope.openPosition(username, "High", instrumentName, amount);
+    }
+
+    $scope.openLowPosition = function (username, instrumentName, amount) {
+        $scope.openPosition(username, "Low", instrumentName, amount);
+    }
+
+    $scope.openPosition = function (username ,direction, instrumentName, amount) {
+        $http({
+            method: 'POST',
+            url: '/Index/OpenPosition',
+            data:
+            {
+                Username: username,
+                Direction: direction,
+                InstrumentName: instrumentName,
+                Amount: amount,
+            }
+        }).then(function successCallback(response) {
+            alertify.success(direction+" position opened successfuly");
+            $scope.accounts.push(response.data);
+        }, function errorCallback(response) {
+            alertify.error("Oh crap, failed to open a position.");
+        });
+    }
+
 }]);

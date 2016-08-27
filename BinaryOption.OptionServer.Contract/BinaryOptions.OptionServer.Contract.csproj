@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\OpenPositionCommand.cs" />
+    <Compile Include="DTO\OpenPositionReply.cs" />
     <Compile Include="DTO\AccountReply.cs" />
     <Compile Include="DTO\InstrumentsReply.cs" />
     <Compile Include="DTO\IReply.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Requests\InstrumentsRequest.cs" />
     <Compile Include="Requests\IRequest.cs" />
     <Compile Include="Requests\LoginRequest.cs" />
+    <Compile Include="Requests\OpenPositionRequest.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
