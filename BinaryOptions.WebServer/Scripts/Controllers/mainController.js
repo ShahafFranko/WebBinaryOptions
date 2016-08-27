@@ -47,15 +47,15 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', function ($scop
     //    });
     //};
 
-    $scope.openHighPosition = function (username, instrumentName, amount) {
+    $scope.openHighPosition = function(username, instrumentName, amount) {
         $scope.openPosition(username, "High", instrumentName, amount);
-    }
+    };
 
-    $scope.openLowPosition = function (username, instrumentName, amount) {
+    $scope.openLowPosition = function(username, instrumentName, amount) {
         $scope.openPosition(username, "Low", instrumentName, amount);
-    }
+    };
 
-    $scope.openPosition = function (username ,direction, instrumentName, amount) {
+    $scope.openPosition = function(username, direction, instrumentName, amount) {
         $http({
             method: 'POST',
             url: '/Index/OpenPosition',
@@ -67,11 +67,21 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', function ($scop
                 Amount: amount,
             }
         }).then(function successCallback(response) {
-            alertify.success(direction+" position opened successfuly");
+            alertify.success(direction + " position opened successfuly");
             $scope.accounts.push(response.data);
         }, function errorCallback(response) {
             alertify.error("Oh crap, failed to open a position.");
         });
-    }
+    };
 
+    $scope.logOut = function () {
+        $http({
+            method: 'POST',
+            url: '/Login/LogOut',
+        }).then(function successCallback(response) {
+            window.location.href = 'http://localhost:2641/login';
+        }, function errorCallback(response) {
+            alertify.error("Failed to log out.");
+        });
+    };
 }]);

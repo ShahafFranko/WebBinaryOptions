@@ -2,10 +2,24 @@ body {
     color: whitesmoke;
 }
 
+.login {
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    color: black;
+}
+
+.logout {
+    margin-top: 15px;
+    cursor: pointer;
+}
+
 .trend-up {
     color: #5CB811;
+    cursor: pointer;
 }
 
 .trend-down {
     color: #FE1A00;
+    cursor: pointer;
 }

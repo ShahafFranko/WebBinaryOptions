@@ -12,6 +12,7 @@ using Akka.Actor;
 
 namespace BinaryOptions.WebServer.Controllers
 {
+    [System.Web.Mvc.Authorize]
     public class IndexController : Controller
     {
         // GET: Index

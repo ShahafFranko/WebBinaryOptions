@@ -13,6 +13,7 @@ using BinaryOptions.WebServer.Models;
 
 namespace BinaryOptions.WebServer.Controllers
 {
+    [System.Web.Mvc.Authorize]
     public class AdminController : Controller
     {
         // GET: Admin

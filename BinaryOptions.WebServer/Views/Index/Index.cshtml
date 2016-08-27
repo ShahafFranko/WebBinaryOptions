@@ -26,9 +26,18 @@
 
     @*Account details*@
     <header>
-        <div class="row">
-
-        </div>
+        <ul class="nav navbar-nav">
+            <li>
+                <span class="navbar-brand">Binary Options</span>
+            </li>
+            <li class="pull-right">
+                <span class="col-md-2">
+                    <span class="fa fa-user"></span>{{account.username}}
+                </span>
+            </li>
+            <li class="pull-right"><span class="fa fa-dollar"></span>{{account.balance}}</li>
+        </ul>
+        <span class="col-md-1 pull-right logout" ng-click="logOut()">Log Out</span>
     </header>
 
     @*instruments & chart*@

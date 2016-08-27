@@ -156,6 +156,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Controllers\adminController.js" />
+    <Content Include="Scripts\Controllers\loginController.js" />
     <Content Include="Scripts\lib\alertify\alertify.js" />
     <Content Include="Scripts\lib\alertify\alertify.min.js" />
     <Content Include="Scripts\app.js" />
@@ -193,10 +194,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\TradingHub.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\CreateAccountModel.cs" />
     <Compile Include="Models\OpenPositionModel.cs" />
@@ -209,6 +212,7 @@
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Scripts\lib\angular.min.js.map" />
     <Content Include="Views\Admin\Admin.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
