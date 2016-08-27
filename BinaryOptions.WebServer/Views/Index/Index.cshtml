@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -7,12 +6,67 @@
 
 <html>
 <head>
+    <script src="~/Scripts/lib/angular.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/index.css" rel="stylesheet">
+    <link href="~/Content/alertify/alertify.core.css" rel="stylesheet">
+    <link href="~/Content/alertify/alertify.default.css" rel="stylesheet">
+    <script src="~/Scripts/lib/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/lib/jquery.signalR-2.2.1.js"></script>
+    <script src="~/Scripts/app.js"></script>
+    <script src="~/Scripts/lib/alertify/alertify.min.js"></script>
+    <script src="~/Scripts/Controllers/mainController.js"></script>
+    <script src="~/Scripts/Services/signalrService.js"></script>
+    <script src="~/Scripts/Services/signalrService.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
-<body>
-    <div> 
-        fghfhfg
+<body ng-app="binaryOptions" ng-controller="mainController" class="navbar-inverse">
+
+    @*Account details*@
+    <header>
+        <div class="row">
+
+        </div>
+    </header>
+
+    @*instruments & chart*@
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Instrument</th>
+                        <th>Rate</th>
+                        <th>Open Up</th>
+                        <th>Open Down</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="instrument in instruments">
+                        <td ng-class="instrument.trend == 'up' ? 'trend-up' : 'trend-down'">{{instrument.name}}</td>
+                        <td ng-class="instrument.trend == 'up' ? 'trend-up' : 'trend-down'">{{instrument.rate}}</td>
+                        <td>
+                            <span class="trend-up fa fa-thumbs-o-up"></span>
+                        </td>
+                        <td>
+                            <span class="trend-down fa fa-thumbs-o-down"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-8">
+            <h3>Chart</h3>
+        </div>
     </div>
+
+    @*open positions*@
+    <footer>
+        <div class="col-md-12">
+            <h3>Open Positions</h3>
+        </div>
+    </footer>
 </body>
 </html>

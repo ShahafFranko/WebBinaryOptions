@@ -4,9 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BinaryOption.DAL.Data;
+using BinaryOptions.DAL.Data;
 
-namespace BinaryOption.DAL
+namespace BinaryOptions.DAL
 {
     public class DBContext : DbContext
     {

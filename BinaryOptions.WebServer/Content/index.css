@@ -1,0 +1,11 @@
+body {
+    color: whitesmoke;
+}
+
+.trend-up {
+    color: #5CB811;
+}
+
+.trend-down {
+    color: #FE1A00;
+}

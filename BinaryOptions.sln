@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryOptions.WebServer", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryOptions.OptionServer", "BinaryOptions.OptionServer\BinaryOptions.OptionServer.csproj", "{8C9CB51F-B46E-4F36-8279-216F9EB11A1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryOption.DAL", "BinaryOption.DAL\BinaryOption.DAL.csproj", "{2FE3C838-A14A-4B4C-90B5-29833BF6B2E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryOptions.DAL", "BinaryOption.DAL\BinaryOptions.DAL.csproj", "{2FE3C838-A14A-4B4C-90B5-29833BF6B2E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryOption.OptionServer.Contract", "BinaryOption.OptionServer.Contract\BinaryOption.OptionServer.Contract.csproj", "{75237867-23D5-47A1-ABBC-CF3196833B06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryOptions.OptionServer.Contract", "BinaryOption.OptionServer.Contract\BinaryOptions.OptionServer.Contract.csproj", "{75237867-23D5-47A1-ABBC-CF3196833B06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

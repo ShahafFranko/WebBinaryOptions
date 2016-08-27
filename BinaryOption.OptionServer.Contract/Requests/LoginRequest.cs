@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BinaryOption.OptionServer.Contract.Requests
 {
-    public class LoginRequest
+    public class LoginRequest : IRequest
     {
         public LoginRequest(string username, string password)
         {

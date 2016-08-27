@@ -10,14 +10,16 @@ using System.Web.Http;
 using Akka.Actor;
 using Akka.Configuration;
 using Akka.Remote;
+using BinaryOption.OptionServer.Contract;
 using BinaryOptions.WebServer.Actors;
 
 namespace BinaryOptions.WebServer
 {
     public class Global : HttpApplication
     {
-        public static ActorSystem m_uiActorSystem;
-        public static IActorRef m_eventsListener;
+        public static ActorSystem ActorSystem;
+        public static IActorRef EventsListener;
+        public static Protocol Protocol;
 
         void Application_Start(object sender, EventArgs e)
         {
@@ -42,8 +44,9 @@ namespace BinaryOptions.WebServer
                     }
                 }");
 
-            m_uiActorSystem = ActorSystem.Create("BinaryOptionsWebserver", config);
-            m_eventsListener = m_uiActorSystem.ActorOf<EventsListener>("EventsListener");
+            ActorSystem = ActorSystem.Create("BinaryOptionsWebserver", config);
+            EventsListener = ActorSystem.ActorOf<EventsListener>("EventsListener");
+            Protocol = new Protocol("BinaryOptionsWebserver", "OptionServer", 6671);
         }
     }
 }

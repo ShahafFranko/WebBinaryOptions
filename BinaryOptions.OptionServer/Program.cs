@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Akka.Actor;
@@ -9,16 +10,16 @@ using Akka.Configuration;
 using Akka.DI.AutoFac;
 using Akka.DI.Core;
 using Autofac;
-using BinaryOption.DAL;
 using BinaryOption.OptionServer.Contract;
 using BinaryOption.OptionServer.Contract.Events;
+using BinaryOptions.DAL;
 using BinaryOptions.OptionServer.Handlers;
 using BinaryOptions.OptionServer.Services;
 
 namespace BinaryOptions.OptionServer
 {
     /// <summary>
-    /// This Binary Options application Based on two major components:
+    /// This Binary Options server based on two major components:
     /// Akka.NET - a .net port of java Akka (we used it for distribution, scalability and concurrency)
     /// Autofac - as a Dependency Injection.
     /// </summary>
@@ -56,6 +57,7 @@ namespace BinaryOptions.OptionServer
             IContainer container = builder.Build();
             AutoFacDependencyResolver resolver = new AutoFacDependencyResolver(container, actorSystem);
 
+            WarmUp(actorSystem);
             ScheduleSystemEvents(actorSystem);
 
             Console.ReadKey();
@@ -70,6 +72,7 @@ namespace BinaryOptions.OptionServer
             builder.RegisterType<ExpireOptionEventHandler>().SingleInstance();
             builder.RegisterType<LoginRequestHandler>().SingleInstance();
             builder.RegisterType<OpenPositionCommandHandler>().SingleInstance();
+            builder.RegisterType<AccountsHandler>().SingleInstance();
             builder.RegisterType<RatesService>().SingleInstance();
         }
 
@@ -85,15 +88,32 @@ namespace BinaryOptions.OptionServer
         }
 
         /// <summary>
-        /// We are schedualing all our event that happen from time to time.
+        /// We are schedualing all our event that happen in the system.
         /// </summary>
         /// <param name="actorSystem"></param>
         private static void ScheduleSystemEvents(ActorSystem actorSystem)
         {
             var expireService = actorSystem.ActorOf(actorSystem.DI().Props<ExpireOptionEventHandler>());
-            var ratesService = actorSystem.ActorOf(actorSystem.DI().Props<RatesService>());
-            actorSystem.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(20), TimeSpan.FromMinutes(1), expireService, new OneMinuteElapsed(), expireService);
-            actorSystem.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(10), ratesService, new TenSecondsElapsed(), ratesService);
+            var ratesService = actorSystem.ActorOf(actorSystem.DI().Props<RatesService>(), "RatesService");
+
+            // we want that the execution will occure every minute, so let's schedule it correctly.
+            int from = 60 - DateTime.Now.Second;
+            actorSystem.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(from), TimeSpan.FromMinutes(1), expireService, new OneMinuteElapsed(), expireService);
+            actorSystem.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1), ratesService, new OneSecondElapsed(), ratesService);
+        }
+
+        /// <summary>
+        // Afer we wiring our actors using autofac, let's instanciate them
+        /// We are doing it now, because basically actor is a thread, which is a bit costly to create
+        /// So we create them during load.
+        /// Since they are actors, the Garbage collector will not collect them.
+        /// </summary>
+        public static void WarmUp(ActorSystem actorSystem)
+        {
+            var accountsHandler = actorSystem.ActorOf(actorSystem.DI().Props<AccountsHandler>(), "AccountsHandler");
+            var positionsHandler = actorSystem.ActorOf(actorSystem.DI().Props<OpenPositionCommandHandler>(), "OpenPositionCommandHandler");
+            var loginHandler = actorSystem.ActorOf(actorSystem.DI().Props<LoginRequestHandler>(), "LoginRequestHandler");
+            var ExpirePositionsHandler = actorSystem.ActorOf(actorSystem.DI().Props<ExpireOptionEventHandler>(), "ExpireOptionEventHandler");
         }
     }
 }

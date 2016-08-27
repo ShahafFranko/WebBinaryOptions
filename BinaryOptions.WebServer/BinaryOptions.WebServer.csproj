@@ -142,14 +142,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\alertify\alertify.bootstrap.css" />
+    <Content Include="Content\alertify\alertify.core.css" />
+    <Content Include="Content\alertify\alertify.default.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\index.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery.signalR-2.2.1.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="Scripts\Controllers\adminController.js" />
+    <Content Include="Scripts\lib\alertify\alertify.js" />
+    <Content Include="Scripts\lib\alertify\alertify.min.js" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\Controllers\mainController.js" />
+    <Content Include="Scripts\lib\jquery.signalR-2.2.1.js" />
+    <Content Include="Scripts\lib\jquery.signalR-2.2.1.min.js" />
     <Content Include="Scripts\lib\angular-mocks.js" />
     <Content Include="Scripts\lib\angular.js" />
     <Content Include="Scripts\lib\angular.min.js" />
@@ -161,24 +173,32 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\lib\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\lib\bootstrap.js" />
     <Content Include="Scripts\lib\bootstrap.min.js" />
     <Content Include="Scripts\lib\jquery-1.9.1.js" />
     <Content Include="Scripts\lib\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\Services\signalrService.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\lib\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actors\CommandBus.cs" />
     <Compile Include="Actors\EventsListener.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\TradingHub.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\CreateAccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -187,6 +207,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Scripts\lib\angular.min.js.map" />
+    <Content Include="Views\Admin\Admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,13 +217,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Scripts\Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BinaryOption.OptionServer.Contract\BinaryOption.OptionServer.Contract.csproj">
+    <ProjectReference Include="..\BinaryOption.OptionServer.Contract\BinaryOptions.OptionServer.Contract.csproj">
       <Project>{75237867-23D5-47A1-ABBC-CF3196833B06}</Project>
-      <Name>BinaryOption.OptionServer.Contract</Name>
+      <Name>BinaryOptions.OptionServer.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

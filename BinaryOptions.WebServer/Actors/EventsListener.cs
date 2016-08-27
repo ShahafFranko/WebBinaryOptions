@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Akka.Actor;
+using BinaryOption.OptionServer.Contract.DTO;
 using BinaryOption.OptionServer.Contract.Events;
 using BinaryOptions.WebServer.Hubs;
 using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Hubs;
 
 namespace BinaryOptions.WebServer.Actors
 {
@@ -28,13 +28,8 @@ namespace BinaryOptions.WebServer.Actors
 
         private void Handle(InstrumentUpdated instrumentUpdated)
         {
-            m_hub.PushInstrument(instrumentUpdated);
-        }
-
-        protected override void PreStart()
-        {
-            var hubManager = new DefaultHubManager(GlobalHost.DependencyResolver);
-            m_hub = hubManager.ResolveHub("tradingHub") as TradingHub;
+            var context = GlobalHost.ConnectionManager.GetHubContext<TradingHub>();
+            context.Clients.All.onInstrumentUpdated(instrumentUpdated);
         }
     }
 }

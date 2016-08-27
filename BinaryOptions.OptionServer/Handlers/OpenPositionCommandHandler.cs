@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Akka.Actor;
 using BinaryOption.OptionServer.Contract.Commands;
+using BinaryOptions.DAL;
 
 namespace BinaryOptions.OptionServer.Handlers
 {

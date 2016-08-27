@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Akka.Actor;
+using BinaryOption.OptionServer.Contract.DTO;
 using BinaryOption.OptionServer.Contract.Requests;
 
 namespace BinaryOptions.OptionServer.Handlers
