@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/Scripts/lib/angular.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/index.css" rel="stylesheet">
+    <link href="~/Content/alertify/alertify.core.css" rel="stylesheet">
+    <link href="~/Content/alertify/alertify.default.css" rel="stylesheet">
+    <script src="~/Scripts/lib/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/lib/jquery.signalR-2.2.1.js"></script>
+    <script src="~/Scripts/app.js"></script>
+    <script src="~/Scripts/lib/alertify/alertify.min.js"></script>
+    <script src="~/Scripts/Controllers/loginController.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body ng-app="binaryOptions" ng-controller="loginController">
+    <div class="jumbotron vertical-center">
+        <div class="container">
+            <div class="login">
+                <div class="form-group">
+                    <label for="username">User:</label>
+                    <input type="text" class="form-control" id="username" ng-model="username">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" ng-model="password">
+                </div>
+                <button type="button" ng-click="login()" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
