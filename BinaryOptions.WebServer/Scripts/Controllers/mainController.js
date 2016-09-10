@@ -1,7 +1,8 @@
 ﻿
-app.controller('mainController', ['$scope', 'hubProxy', '$http', function ($scope, hubProxy, $http) {
+app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$interval', function ($scope, hubProxy, $http, $cookies, $interval) {
     
     $scope.instruments = [];
+    $scope.account = null;
 
     var hub = hubProxy('http://localhost:2641/', 'tradingHub');
 
@@ -22,9 +23,20 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', function ($scop
             }
         }
     });
+
+    hub.on('onAccountUpdated', function (account) {
+        $scope.account = account;
+    });
+
     $scope.$on('connectionEstablished', function () {
         // success notification
         alertify.success("Connected to server.");
+
+        // get accounts details during load.
+        $scope.getAccountDetails();
+
+        //poll for account changes every 10 seconds.
+        $interval($scope.getAccountDetails, 5000);
 
         hub.invoke('getInstruments', function (instruments) {
             $scope.mapInstrumentResponse(instruments);
@@ -41,11 +53,14 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', function ($scop
         }
     };
 
-    //$scope.openUpPosition = function (amount, instrumentName) {
-    //    hub.invoke('openUpPosition', function () {
-    //        alertify.success("Position opened successfuly");
-    //    });
-    //};
+    $scope.mapAccountResponse = function (response) {
+        $scope.account = {
+            id: response.Id,
+            username: response.Username,
+            balance: response.Balance,
+            positions: response.Positions
+        };
+    };
 
     $scope.openHighPosition = function(username, instrumentName, amount) {
         $scope.openPosition(username, "High", instrumentName, amount);
@@ -61,14 +76,13 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', function ($scop
             url: '/Index/OpenPosition',
             data:
             {
-                Username: username,
+                AccountId: $scope.account.id,
                 Direction: direction,
                 InstrumentName: instrumentName,
                 Amount: amount,
             }
         }).then(function successCallback(response) {
             alertify.success(direction + " position opened successfuly");
-            $scope.accounts.push(response.data);
         }, function errorCallback(response) {
             alertify.error("Oh crap, failed to open a position.");
         });
@@ -82,6 +96,23 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', function ($scop
             window.location.href = 'http://localhost:2641/login';
         }, function errorCallback(response) {
             alertify.error("Failed to log out.");
+        });
+    };
+
+    $scope.getAccountDetails = function () {
+        $http({
+            method: 'POST',
+            url: '/Index/GetAccount',
+            data:
+            {
+                AccountId: $cookies.get('accountId'),
+            }
+        }).then(function successCallback(response) {
+            //$scope.account = response.data;
+            $scope.mapAccountResponse(response.data);
+        }, function errorCallback(response) {
+            alertify.error("Failed to get account details.");
+            $scope.logOut();
         });
     };
 }]);

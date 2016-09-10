@@ -13,7 +13,7 @@ namespace BinaryOptions.DAL.Data
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public Guid AccountId { get; set; }
-        public Guid InstrumentId { get; set; }
+        public string InstrumentName { get; set; }
         public int Amount { get; set; }
         public DateTime OpenTime { get; set; }
         public DateTime ExpireTime { get; set; }

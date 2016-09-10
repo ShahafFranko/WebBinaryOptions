@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,11 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\OpenPositionCommand.cs" />
+    <Compile Include="Commands\ClosePositionCommand.cs" />
     <Compile Include="DTO\OpenPositionReply.cs" />
     <Compile Include="DTO\AccountReply.cs" />
     <Compile Include="DTO\InstrumentsReply.cs" />
     <Compile Include="DTO\IReply.cs" />
+    <Compile Include="DTO\PositionDto.cs" />
     <Compile Include="Entities\Direction.cs" />
     <Compile Include="Events\AccountUpdated.cs" />
     <Compile Include="Events\InstrumentUpdated.cs" />
@@ -53,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol.cs" />
     <Compile Include="DTO\LoginReply.cs" />
+    <Compile Include="Requests\AccountRequest.cs" />
     <Compile Include="Requests\CreateAccountRequest.cs" />
     <Compile Include="Requests\InstrumentsRequest.cs" />
     <Compile Include="Requests\IRequest.cs" />

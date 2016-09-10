@@ -9,17 +9,15 @@ namespace BinaryOption.OptionServer.Contract.Requests
 {
     public class OpenPositionRequest
     {
-        public OpenPositionRequest(string username, Direction direction, string instrumentName, int amount)
+        public OpenPositionRequest(Guid accountId, Direction direction, string instrumentName, int amount)
         {
-            Username = username;
+            AccountId = accountId;
             Direction = direction;
             InstrumentName = instrumentName;
             Amount = amount;
         }
 
-
-
-        public string Username { get; private set; }
+        public Guid AccountId { get; private set; }
         public Direction Direction { get; private set; }
         public string InstrumentName { get; private set; }
         public int Amount { get; private set; }

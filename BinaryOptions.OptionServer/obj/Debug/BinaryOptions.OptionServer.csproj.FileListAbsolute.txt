@@ -66,3 +66,5 @@ C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Google.ProtocolBuffers.Serialization.xml
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\System.Collections.Immutable.xml
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\EntityFramework.SqlServer.dll
+\\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.OptionServer\bin\Debug\EntityFramework.SqlServer.xml

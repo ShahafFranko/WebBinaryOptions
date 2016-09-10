@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI.WebControls;
+using Akka.Actor;
+using BinaryOption.OptionServer.Contract.DTO;
+using BinaryOption.OptionServer.Contract.Requests;
 using BinaryOptions.WebServer.Models;
 
 namespace BinaryOptions.WebServer.Controllers
@@ -23,14 +28,18 @@ namespace BinaryOptions.WebServer.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public void Login([FromBody] LoginModel model)
+        public async Task<Guid> Login([FromBody] LoginModel model)
         {
-            //Validation code
-
-            if (true)
+            LoginRequest request = new LoginRequest(model.Username, model.Password);
+            string loginHandler = Global.Protocol.GenerateTcpPath("LoginRequestHandler");
+            LoginReply response = await Global.ActorSystem.ActorSelection(loginHandler).Ask<LoginReply>(request);
+            
+            if (response.SuccessfulLogin)
             {
                 FormsAuthentication.SetAuthCookie(model.Username, false);
             }
+
+            return response.AccountId;
         }
 
         [System.Web.Mvc.Authorize]
@@ -38,7 +47,6 @@ namespace BinaryOptions.WebServer.Controllers
         public void LogOut()
         {
             FormsAuthentication.SignOut();
-            //Response.Redirect("~/Views/Login/Index.cshtml");
         }
     }
 }

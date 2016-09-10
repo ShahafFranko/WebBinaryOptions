@@ -22,14 +22,27 @@ namespace BinaryOptions.WebServer.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public async Task<JsonResult> OpenPosition([FromBody] OpenPositionModel model)
+        public async Task<JsonResult> OpenPosition([FromBody] PositionModel model)
         {
             // First lets create path to our handler.
             string openPositionCommandHandler = Global.Protocol.GenerateTcpPath("OpenPositionCommandHandler");
             
             // now let's send account creation request.
-            var request = new OpenPositionRequest(model.Username,model.Direction,model.InstrumentName,model.Amount);
+            var request = new OpenPositionRequest(model.AccountId, model.Direction, model.InstrumentName, model.Amount);
             var response = await Global.ActorSystem.ActorSelection(openPositionCommandHandler).Ask<IReply>(request) as OpenPositionReply;
+
+            return Json(response);
+        }
+        
+        [System.Web.Mvc.HttpPost]
+        public async Task<JsonResult> GetAccount([FromBody] Guid accountId)
+        {
+            // First lets create path to our handler.
+            string accountsHandler = Global.Protocol.GenerateTcpPath("AccountsHandler");
+            
+            // now let's send account creation request.
+            var request = new AccountRequest(accountId);
+            var response = await Global.ActorSystem.ActorSelection(accountsHandler).Ask<IReply>(request) as AccountReply;
 
             return Json(response);
         }

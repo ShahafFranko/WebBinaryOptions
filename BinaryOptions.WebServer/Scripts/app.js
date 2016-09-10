@@ -1,1 +1,1 @@
-﻿var app = angular.module('binaryOptions', []);
+﻿var app = angular.module('binaryOptions', ['ngCookies']);

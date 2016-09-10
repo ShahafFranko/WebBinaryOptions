@@ -48,13 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseConfigurations.cs" />
     <Compile Include="Data\Direction.cs" />
     <Compile Include="Data\Instrument.cs" />
-    <Compile Include="Repositories\AccountsRepository.cs" />
     <Compile Include="Data\Account.cs" />
     <Compile Include="Data\Position.cs" />
-    <Compile Include="DBContext.cs" />
-    <Compile Include="Repositories\PositionsRepository.cs" />
+    <Compile Include="AccountContext.cs" />
+    <Compile Include="Repositories\InstrumentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

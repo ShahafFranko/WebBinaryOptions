@@ -9,8 +9,11 @@ body {
     color: black;
 }
 
+.account-details {
+    margin: 15px;
+}
+
 .logout {
-    margin-top: 15px;
     cursor: pointer;
 }
 

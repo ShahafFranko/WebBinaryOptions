@@ -10,6 +10,7 @@ using Akka.Configuration;
 using Akka.DI.AutoFac;
 using Akka.DI.Core;
 using Autofac;
+using BinaryOption.DAL.Repositories;
 using BinaryOption.OptionServer.Contract;
 using BinaryOption.OptionServer.Contract.Events;
 using BinaryOptions.DAL;
@@ -69,9 +70,9 @@ namespace BinaryOptions.OptionServer
         /// <param name="builder"></param>
         private static void RegisterActors(ContainerBuilder builder)
         {
-            builder.RegisterType<ExpireOptionEventHandler>().SingleInstance();
             builder.RegisterType<LoginRequestHandler>().SingleInstance();
             builder.RegisterType<OpenPositionCommandHandler>().SingleInstance();
+            builder.RegisterType<ClosePositionCommandHandler>().SingleInstance();
             builder.RegisterType<AccountsHandler>().SingleInstance();
             builder.RegisterType<RatesService>().SingleInstance();
         }
@@ -82,9 +83,7 @@ namespace BinaryOptions.OptionServer
         /// <param name="builder"></param>
         private static void RegisterDAL(ContainerBuilder builder)
         {
-            builder.RegisterType<DBContext>().SingleInstance();
-            builder.RegisterType<AccountsRepository>().SingleInstance();
-            builder.RegisterType<PositionsRepository>().SingleInstance();
+            builder.RegisterType<InstrumentRepository>().SingleInstance();
         }
 
         /// <summary>
@@ -93,12 +92,8 @@ namespace BinaryOptions.OptionServer
         /// <param name="actorSystem"></param>
         private static void ScheduleSystemEvents(ActorSystem actorSystem)
         {
-            var expireService = actorSystem.ActorOf(actorSystem.DI().Props<ExpireOptionEventHandler>());
             var ratesService = actorSystem.ActorOf(actorSystem.DI().Props<RatesService>(), "RatesService");
 
-            // we want that the execution will occure every minute, so let's schedule it correctly.
-            int from = 60 - DateTime.Now.Second;
-            actorSystem.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(from), TimeSpan.FromMinutes(1), expireService, new OneMinuteElapsed(), expireService);
             actorSystem.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1), ratesService, new OneSecondElapsed(), ratesService);
         }
 
@@ -113,7 +108,7 @@ namespace BinaryOptions.OptionServer
             var accountsHandler = actorSystem.ActorOf(actorSystem.DI().Props<AccountsHandler>(), "AccountsHandler");
             var positionsHandler = actorSystem.ActorOf(actorSystem.DI().Props<OpenPositionCommandHandler>(), "OpenPositionCommandHandler");
             var loginHandler = actorSystem.ActorOf(actorSystem.DI().Props<LoginRequestHandler>(), "LoginRequestHandler");
-            var ExpirePositionsHandler = actorSystem.ActorOf(actorSystem.DI().Props<ExpireOptionEventHandler>(), "ExpireOptionEventHandler");
+            var closePositionCommandHandler = actorSystem.ActorOf(actorSystem.DI().Props<ClosePositionCommandHandler>(), "ClosePositionCommandHandler");
         }
     }
 }

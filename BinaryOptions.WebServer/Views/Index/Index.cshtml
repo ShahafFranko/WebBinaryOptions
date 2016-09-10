@@ -7,6 +7,7 @@
 <html>
 <head>
     <script src="~/Scripts/lib/angular.js"></script>
+    <script src="~/Scripts/lib/angular-cookies.min.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/font-awesome.min.css" rel="stylesheet">
     <link href="~/Content/index.css" rel="stylesheet">
@@ -23,21 +24,18 @@
     <title>Index</title>
 </head>
 <body ng-app="binaryOptions" ng-controller="mainController" class="navbar-inverse">
-
     @*Account details*@
     <header>
-        <ul class="nav navbar-nav">
-            <li>
-                <span class="navbar-brand">Binary Options</span>
-            </li>
-            <li class="pull-right">
-                <span class="col-md-2">
-                    <span class="fa fa-user"></span>{{account.username}}
-                </span>
-            </li>
-            <li class="pull-right"><span class="fa fa-dollar"></span>{{account.balance}}</li>
-        </ul>
-        <span class="col-md-1 pull-right logout" ng-click="logOut()">Log Out</span>
+        <span class="navbar-brand pull-left">Binary Options</span>
+        <span class="col-md-1 pull-right account-details logout" ng-click="logOut()">Log Out</span>
+        <span class="pull-right account-details">
+            <span class="fa fa-dollar"></span>
+            <span class="pull-right">{{account.balance}}</span>
+        </span>
+        <span class="pull-right account-details">
+            <span class="fa fa-user pull-left"></span>
+            <span class="pull-right">{{account.username}}</span>
+        </span>
     </header>
 
     @*instruments & chart*@
@@ -75,6 +73,34 @@
     <footer>
         <div class="col-md-12">
             <h3>Open Positions</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Open Time</th>
+                        <th>Instrument</th>
+                        <th>Direction</th>
+                        <th>Amount</th>
+                        <th>Open Rate</th>
+                        <th>Expire Time</th>
+                        <th>Close Rate</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="position in account.positions">
+                        <td>{{position.OpenTime | date}}</td>
+                        <td>{{position.InstrumentName}}</td>
+                        <td>{{position.Direction}}</td>
+                        <td>{{position.Amount}}</td>
+                        <td>{{position.OpenPrice}}</td>
+                        <td>{{position.ExpireTime}}</td>
+                        <td>{{position.ClosePrice}}</td>
+                        <td>
+                            {{(position.Direction == 'High' && position.OpenPrice < position.ClosePrice ? 'WIN' : 'Loose')}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </footer>
 </body>

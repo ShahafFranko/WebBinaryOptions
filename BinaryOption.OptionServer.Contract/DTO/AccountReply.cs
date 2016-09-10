@@ -8,15 +8,17 @@ namespace BinaryOption.OptionServer.Contract.DTO
 {
     public class AccountReply : IReply
     {
-        public AccountReply(string username, string password, int balance)
+        public AccountReply(Guid id, string username, double balance, IList<PositionDto> positions)
         {
+            Id = id;
             Username = username;
-            Password = password;
-            Balance = balance;
+            Balance = Math.Round(balance, 2);
+            Positions = positions;
         }
 
+        public Guid Id { get; private set; }
         public string Username { get; private set; }
-        public string Password { get; private set; }
-        public int Balance { get; private set; }
+        public double Balance { get; private set; }
+        public IList<PositionDto> Positions { get; set; }
     }
 }

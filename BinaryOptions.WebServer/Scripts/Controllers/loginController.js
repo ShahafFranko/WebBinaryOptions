@@ -1,5 +1,5 @@
 ﻿
-app.controller('loginController', ['$scope', '$http', function ($scope, $http) {
+app.controller('loginController', ['$scope', '$http', '$cookies', function ($scope, $http, $cookies) {
 
     $scope.username = null;
     $scope.password = null;
@@ -14,6 +14,7 @@ app.controller('loginController', ['$scope', '$http', function ($scope, $http) {
                 Password: $scope.password,
             }
         }).then(function successCallback(response) {
+            $cookies.put('accountId', response.data);
             window.location.href = 'http://localhost:2641/';
         }, function errorCallback(response) {
             alertify.error("Login Failed, please try again.");

@@ -9,7 +9,7 @@ namespace BinaryOptions.WebServer.Models
     public class AccountModel
     {
         public string Username { get; set; }
-        public int Balance { get; set; }
+        public double Balance { get; set; }
 
         public static AccountModel FromDto(AccountReply accountDto)
         {
