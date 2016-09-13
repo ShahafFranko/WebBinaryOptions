@@ -9,11 +9,12 @@ using System.Web.Mvc;
 using Akka.Actor;
 using BinaryOption.OptionServer.Contract.DTO;
 using BinaryOption.OptionServer.Contract.Requests;
+using BinaryOptions.WebServer.Auth;
 using BinaryOptions.WebServer.Models;
 
 namespace BinaryOptions.WebServer.Controllers
 {
-    //[System.Web.Mvc.Authorize]
+    //[BasicAuthentication("admin", "admin", BasicRealm = "localhost")]
     public class AdminController : Controller
     {
         // GET: Admin
