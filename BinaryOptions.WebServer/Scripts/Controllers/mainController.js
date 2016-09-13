@@ -58,8 +58,26 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$i
             id: response.Id,
             username: response.Username,
             balance: response.Balance,
-            positions: response.Positions
+            positions: $scope.mapPositionsResponse(response.Positions)
         };
+    };
+
+    $scope.mapPositionsResponse = function (positionsResponse) {
+        var positions = [];
+
+        for (var i = 0; i < positionsResponse.length; i++) {
+            positions.push({
+                openTime: moment(parseInt(positionsResponse[i].OpenTime.substr(6))).format("DD/MM/YYYY HH:mm:ss"),
+                instrumentName: positionsResponse[i].InstrumentName,
+                direction: positionsResponse[i].Direction,
+                amount: positionsResponse[i].Amount,
+                openPrice: positionsResponse[i].OpenPrice,
+                expireTime: moment(parseInt(positionsResponse[i].ExpireTime.substr(6))).format("DD/MM/YYYY HH:mm:ss"),
+                closePrice: positionsResponse[i].ClosePrice
+            });
+        }
+
+        return positions;
     };
 
     $scope.openHighPosition = function(username, instrumentName, amount) {
@@ -108,7 +126,6 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$i
                 AccountId: $cookies.get('accountId'),
             }
         }).then(function successCallback(response) {
-            //$scope.account = response.data;
             $scope.mapAccountResponse(response.data);
         }, function errorCallback(response) {
             alertify.error("Failed to get account details.");

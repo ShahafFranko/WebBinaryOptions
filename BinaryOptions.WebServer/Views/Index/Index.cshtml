@@ -6,17 +6,18 @@
 
 <html>
 <head>
-    <script src="~/Scripts/lib/angular.js"></script>
+    <script src="~/Scripts/lib/angular.min.js"></script>
     <script src="~/Scripts/lib/angular-cookies.min.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/font-awesome.min.css" rel="stylesheet">
     <link href="~/Content/index.css" rel="stylesheet">
     <link href="~/Content/alertify/alertify.core.css" rel="stylesheet">
     <link href="~/Content/alertify/alertify.default.css" rel="stylesheet">
-    <script src="~/Scripts/lib/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/lib/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/lib/jquery.signalR-2.2.1.js"></script>
     <script src="~/Scripts/app.js"></script>
     <script src="~/Scripts/lib/alertify/alertify.min.js"></script>
+    <script src="~/Scripts/lib/moment/moment.min.js"></script>
     <script src="~/Scripts/Controllers/mainController.js"></script>
     <script src="~/Scripts/Services/signalrService.js"></script>
     <script src="~/Scripts/Services/signalrService.js"></script>
@@ -33,7 +34,7 @@
             <span class="pull-right">{{account.balance}}</span>
         </span>
         <span class="pull-right account-details">
-            <span class="fa fa-user pull-left"></span>
+            <span style="padding-top: 3px;" class="fa fa-user pull-left"></span>
             <span class="pull-right">{{account.username}}</span>
         </span>
     </header>
@@ -88,15 +89,15 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="position in account.positions">
-                        <td>{{position.OpenTime | date}}</td>
-                        <td>{{position.InstrumentName}}</td>
-                        <td>{{position.Direction}}</td>
-                        <td>{{position.Amount}}</td>
-                        <td>{{position.OpenPrice}}</td>
-                        <td>{{position.ExpireTime}}</td>
-                        <td>{{position.ClosePrice}}</td>
+                        <td>{{position.openTime}}</td>
+                        <td>{{position.instrumentName}}</td>
+                        <td>{{position.direction}}</td>
+                        <td>{{position.amount}}</td>
+                        <td>{{position.openPrice}}</td>
+                        <td>{{position.expireTime}}</td>
+                        <td>{{position.closePrice}}</td>
                         <td>
-                            {{(position.Direction == 'High' && position.OpenPrice < position.ClosePrice ? 'WIN' : 'Loose')}}
+                            {{(position.direction == 'High' && position.openPrice < position.closePrice ? 'WIN' : 'Loose')}}
                         </td>
                     </tr>
                 </tbody>
