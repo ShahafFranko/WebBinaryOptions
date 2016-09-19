@@ -31,7 +31,7 @@ namespace BinaryOptions.OptionServer.Handlers
         {
             try
             {
-                using (var ctx = AccountContext.Create())
+                using (var ctx = BinaryOptionsContext.Create())
                 {
                     Account account = ctx.Accounts.SingleOrDefault(c => c.Id == command.AccountId);
                     Instrument instrument = m_instrumentRepository.GetInstrument(command.InstrumentName);

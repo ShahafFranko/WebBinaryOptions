@@ -156,7 +156,7 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$i
             duration = 250,
             now = new Date(Date.now() - duration)
 
-    var width = 500,
+    var width = 750,
         height = 200
 
     var groups = {

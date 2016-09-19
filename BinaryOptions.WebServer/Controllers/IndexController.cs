@@ -18,6 +18,11 @@ namespace BinaryOptions.WebServer.Controllers
         // GET: Index
         public ActionResult Index()
         {
+            if (HttpContext.User.Identity.Name == "admin")
+            {
+                return View("~/Views/Admin/Admin.cshtml");
+            }
+
             return View();
         }
 

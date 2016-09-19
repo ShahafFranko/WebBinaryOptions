@@ -37,7 +37,7 @@ namespace BinaryOptions.OptionServer.Handlers
 
             try
             {
-                using (AccountContext ctx = AccountContext.Create())
+                using (BinaryOptionsContext ctx = BinaryOptionsContext.Create())
                 {
                     ctx.Accounts.Add(account);
                     ctx.SaveChanges();
@@ -54,7 +54,7 @@ namespace BinaryOptions.OptionServer.Handlers
 
         private void Handle(AccountRequest request)
         {
-            using (AccountContext ctx = AccountContext.Create())
+            using (BinaryOptionsContext ctx = BinaryOptionsContext.Create())
             {
                 Account account = ctx.Accounts.SingleOrDefault(a => a.Id == request.AccountId);
 
@@ -65,7 +65,7 @@ namespace BinaryOptions.OptionServer.Handlers
                     return;
                 }
 
-                IList<PositionDto> positions = ctx.Positions.Where(p => p.AccountId == account.Id).Select(ConvertToDto).ToList();
+                IList<PositionDto> positions = account.Positions.Where(p => p.AccountId == account.Id).Select(ConvertToDto).ToList();
                 
                 AccountReply reply = new AccountReply(account.Id, account.Username, account.Balance, positions);
 

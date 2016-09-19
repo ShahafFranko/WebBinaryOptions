@@ -49,12 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseConfigurations.cs" />
+    <Compile Include="DataInitializer.cs" />
     <Compile Include="Data\Direction.cs" />
     <Compile Include="Data\Instrument.cs" />
     <Compile Include="Data\Account.cs" />
     <Compile Include="Data\InstrumentRate.cs" />
     <Compile Include="Data\Position.cs" />
-    <Compile Include="AccountContext.cs" />
+    <Compile Include="BinaryOptionsContext.cs" />
     <Compile Include="Repositories\InstrumentRateRepository.cs" />
     <Compile Include="Repositories\InstrumentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

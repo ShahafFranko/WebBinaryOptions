@@ -26,7 +26,7 @@ namespace BinaryOptions.OptionServer.Handlers
         {
             try
             {
-                using (var ctx = AccountContext.Create())
+                using (var ctx = BinaryOptionsContext.Create())
                 {
                     Account account = ctx.Accounts.SingleOrDefault(a => a.Username == request.Username && a.Password == request.Password);
 

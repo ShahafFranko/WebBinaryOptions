@@ -12,6 +12,7 @@ namespace BinaryOptions.DAL.Data
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+
         public Guid AccountId { get; set; }
         public string InstrumentName { get; set; }
         public int Amount { get; set; }
@@ -20,5 +21,8 @@ namespace BinaryOptions.DAL.Data
         public double OpenPrice { get; set; }
         public double? ClosePrice { get; set; }
         public Direction Direction { get; set; }
+
+        [ForeignKey("AccountId")]
+        public Account Account { get; set; }
     }
 }

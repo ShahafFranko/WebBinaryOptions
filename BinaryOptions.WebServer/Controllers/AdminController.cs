@@ -14,7 +14,7 @@ using BinaryOptions.WebServer.Models;
 
 namespace BinaryOptions.WebServer.Controllers
 {
-    //[BasicAuthentication("admin", "admin", BasicRealm = "localhost")]
+    [System.Web.Mvc.Authorize]
     public class AdminController : Controller
     {
         // GET: Admin

@@ -37,7 +37,7 @@ namespace BinaryOptions.OptionServer.Handlers
 
             try
             {
-                using (var ctx = AccountContext.Create())
+                using (var ctx = BinaryOptionsContext.Create())
                 {
                     account = ctx.Accounts.SingleOrDefault(a => a.Id == request.AccountId);
 
