@@ -152,9 +152,12 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\index.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="D3 LICENSE.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\lib\d3.v3.js" />
+    <Content Include="Scripts\lib\d3.v3.min.js" />
     <Content Include="Scripts\lib\angular-cookies.js" />
     <Content Include="Scripts\lib\angular-cookies.min.js" />
     <Content Include="Scripts\Controllers\adminController.js" />

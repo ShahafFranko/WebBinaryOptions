@@ -16,6 +16,7 @@ namespace BinaryOptions.OptionServer.Services
     {
         private readonly InstrumentRepository m_instrumentRepository;
         private readonly Protocol m_protocol;
+        private InstrumentRateRepository m_rateRepository = new InstrumentRateRepository();
         
         public RatesService(InstrumentRepository instrumentRepository, Protocol protocol)
         {
@@ -55,6 +56,17 @@ namespace BinaryOptions.OptionServer.Services
                 instrument.Update(d);
                 m_instrumentRepository.Update(instrument);
             }
+        }
+
+        private void HandleInstrumentRates(InstrumentRatesRequest instrumentRatesRequest)
+        {
+            IList<InstrumentRate> instrumentRates = m_rateRepository.GetInstrumentById(instrumentRatesRequest.Id);
+
+            IList<InstrumentRateReply> ratesReply = instrumentRates.Select(i => new InstrumentRateReply(i.Id, i.Rate, i.Time)).ToList();
+
+            InstrumentRatesReply reply = new InstrumentRatesReply(ratesReply);
+
+            Sender.Tell(reply, Self);
         }
     }
 }

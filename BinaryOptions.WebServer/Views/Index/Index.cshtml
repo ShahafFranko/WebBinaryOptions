@@ -18,13 +18,57 @@
     <script src="~/Scripts/app.js"></script>
     <script src="~/Scripts/lib/alertify/alertify.min.js"></script>
     <script src="~/Scripts/lib/moment/moment.min.js"></script>
-    <script src="~/Scripts/Controllers/mainController.js"></script>
+    <!--<script src="~/Scripts/Controllers/mainController.js"></script>-->
     <script src="~/Scripts/Services/signalrService.js"></script>
     <script src="~/Scripts/Services/signalrService.js"></script>
+    <script src="~/Scripts/lib/d3.v3.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
 <body ng-app="binaryOptions" ng-controller="mainController" class="navbar-inverse">
+    <style>
+        .graph .axis {
+            stroke-width: 1;
+        }
+
+            .graph .axis .tick line {
+                stroke: black;
+            }
+
+            .graph .axis .tick text {
+                fill: black;
+                font-size: 0.7em;
+            }
+
+            .graph .axis .domain {
+                fill: none;
+                stroke: black;
+            }
+
+        .graph .group {
+            fill: none;
+            stroke: black;
+            stroke-width: 1.5;
+        }
+
+        path {
+            fill: none;
+            stroke: #000;
+        }
+
+        text {
+            fill: white;
+            stroke: white;
+            font-size: 16px;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: white;
+            shape-rendering: crispEdges;
+        }
+    </style>
     @*Account details*@
     <header>
         <span class="navbar-brand pull-left">Binary Options</span>
@@ -67,6 +111,7 @@
         </div>
         <div class="col-md-8">
             <h3>Chart</h3>
+            <svg width="960" height="500"></svg>
         </div>
     </div>
 
@@ -104,5 +149,6 @@
             </table>
         </div>
     </footer>
+    <script src="~/Scripts/Controllers/mainController.js"></script>
 </body>
 </html>

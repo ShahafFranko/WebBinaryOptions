@@ -10,3 +10,5 @@ C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.OptionServer.Contract\ob
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.OptionServer.Contract\obj\Debug\BinaryOption.OptionServer.Contract.pdb
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOption.OptionServer.Contract\bin\Debug\Newtonsoft.Json.dll
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOption.OptionServer.Contract\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.OptionServer.Contract\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.OptionServer.Contract\bin\Debug\Newtonsoft.Json.xml

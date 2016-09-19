@@ -46,5 +46,18 @@ namespace BinaryOptions.WebServer.Controllers
 
             return Json(response);
         }
+
+        [System.Web.Mvc.HttpGet]
+        public async Task<JsonResult> GetInstrumentRates([FromUri] Guid instrumentId)
+        {
+            // First lets create path to our handler.
+            string ratesService = Global.Protocol.GenerateTcpPath("RatesService");
+
+            // now let's send account creation request.
+            var request = new InstrumentRatesRequest(instrumentId);
+            var response = await Global.ActorSystem.ActorSelection(ratesService).Ask<IReply>(request) as InstrumentRatesReply;
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
     }
 }
