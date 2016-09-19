@@ -1,73 +1,15 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
 <head>
-    <script src="~/Scripts/lib/angular.min.js"></script>
-    <script src="~/Scripts/lib/angular-cookies.min.js"></script>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet">
     <link href="~/Content/index.css" rel="stylesheet">
-    <link href="~/Content/alertify/alertify.core.css" rel="stylesheet">
-    <link href="~/Content/alertify/alertify.default.css" rel="stylesheet">
-    <script src="~/Scripts/lib/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/lib/jquery.signalR-2.2.1.js"></script>
-    <script src="~/Scripts/app.js"></script>
-    <script src="~/Scripts/lib/alertify/alertify.min.js"></script>
-    <script src="~/Scripts/lib/moment/moment.min.js"></script>
-    <script src="~/Scripts/Services/signalrService.js"></script>
-    <script src="~/Scripts/Services/signalrService.js"></script>
+    <link href="~/Content/chart.css" rel="stylesheet">
     <script src="~/Scripts/lib/d3.v3.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
-<body ng-app="binaryOptions" ng-controller="mainController" class="navbar-inverse">
-    <style>
-        .graph .axis {
-            stroke-width: 1;
-        }
-
-            .graph .axis .tick line {
-                stroke: black;
-            }
-
-            .graph .axis .tick text {
-                fill: black;
-                font-size: 0.7em;
-            }
-
-            .graph .axis .domain {
-                fill: none;
-                stroke: black;
-            }
-
-        .graph .group {
-            fill: none;
-            stroke: black;
-            stroke-width: 1.5;
-        }
-
-        path {
-            fill: none;
-            stroke: #000;
-        }
-
-        text {
-            fill: white;
-            stroke: white;
-            font-size: 16px;
-        }
-
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: white;
-            shape-rendering: crispEdges;
-        }
-    </style>
+<body ng-controller="mainController" class="navbar-inverse">
     @*Account details*@
     <header>
         <span class="navbar-brand pull-left">Binary Options</span>
@@ -149,4 +91,3 @@
     </footer>
     <script src="~/Scripts/Controllers/mainController.js"></script>
 </body>
-</html>

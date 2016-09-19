@@ -150,6 +150,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\chart.css" />
+    <Content Include="Content\admin.css" />
     <Content Include="Content\index.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="D3 LICENSE.txt" />
@@ -224,6 +226,7 @@
     <Content Include="Scripts\lib\angular.min.js.map" />
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Shared.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

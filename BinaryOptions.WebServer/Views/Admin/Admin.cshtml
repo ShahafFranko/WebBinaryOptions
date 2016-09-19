@@ -1,29 +1,15 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "~/Views/Shared.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-    <head>
-        <script src="~/Scripts/lib/angular.js"></script>
-        <script src="~/Scripts/lib/angular-cookies.min.js"></script>
-        <link href="~/Content/bootstrap.min.css" rel="stylesheet">
-        <link href="~/Content/alertify/alertify.core.css" rel="stylesheet">
-        <link href="~/Content/alertify/alertify.default.css" rel="stylesheet">
-        <script src="~/Scripts/lib/jquery-1.9.1.js"></script>
-        <script src="~/Scripts/lib/jquery.signalR-2.2.1.js"></script>
-        <script src="~/Scripts/app.js"></script>
-        <script src="~/Scripts/lib/alertify/alertify.min.js"></script>
-        <script src="~/Scripts/Controllers/adminController.js"></script>
-        <script src="~/Scripts/Services/signalrService.js"></script>
-        <script src="~/Scripts/Services/signalrService.js"></script>
-        <meta name="viewport" content="width=device-width" />
-        <title>Admin</title>
-    </head>
-<body ng-app="binaryOptions" ng-controller="adminController">
+<head>
+    <link href="~/Content/admin.css" rel="stylesheet">
+    <script src="~/Scripts/Controllers/adminController.js"></script>
+    <title>Admin</title>
+</head>
+<body ng-controller="adminController">
     <header>
+        <span class="col-md-1 pull-right logout" ng-click="logOut()">Log Out</span>
         <center>
             <h2>Admin Panel</h2>
         </center>
@@ -46,7 +32,7 @@
                 </div>
                 <button type="button" ng-click="createAccount()" class="btn btn-primary">Create</button>
             </div>
-            
+
             <table class="table" ng-if="accounts.length > 0">
                 <thead>
                     <tr>
@@ -80,12 +66,11 @@
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-primary">
         <div class="panel-heading">Richest Traders</div>
         <div class="panel-body">
-            
+
         </div>
     </div>
 </body>
-</html>

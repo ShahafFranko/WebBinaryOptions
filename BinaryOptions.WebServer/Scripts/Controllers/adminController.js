@@ -35,5 +35,16 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
         }, function errorCallback(response) {
             alertify.error("Oh crap, failed to create an account.");
         });
-    }
+    };
+
+    $scope.logOut = function () {
+        $http({
+            method: 'POST',
+            url: '/Login/LogOut',
+        }).then(function successCallback(response) {
+            window.location.href = 'http://localhost:2641/login';
+        }, function errorCallback(response) {
+            alertify.error("Failed to log out.");
+        });
+    };
 }]);
