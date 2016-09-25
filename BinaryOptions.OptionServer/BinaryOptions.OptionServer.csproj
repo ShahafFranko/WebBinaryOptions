@@ -92,6 +92,7 @@
     <Compile Include="Handlers\AccountsHandler.cs" />
     <Compile Include="Handlers\LoginRequestHandler.cs" />
     <Compile Include="Handlers\ClosePositionCommandHandler.cs" />
+    <Compile Include="Handlers\SearchRequestsHandler.cs" />
     <Compile Include="Handlers\OpenPositionCommandHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

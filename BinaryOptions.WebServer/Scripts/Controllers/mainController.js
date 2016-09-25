@@ -31,6 +31,13 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$i
         }
     });
 
+    var spinner = $("#ammount-spinner").spinner({
+        min: 10,
+        max: 10000,
+        step: 10,
+        culture: "en"
+    });
+
     hub.on('onAccountUpdated', function (account) {
         $scope.account = account;
     });
@@ -95,7 +102,7 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$i
         $scope.openPosition(username, "Low", instrumentName, amount);
     };
 
-    $scope.openPosition = function(username, direction, instrumentName, amount) {
+    $scope.openPosition = function(username, direction, instrumentName) {
         $http({
             method: 'POST',
             url: '/Index/OpenPosition',
@@ -104,7 +111,7 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$i
                 AccountId: $scope.account.id,
                 Direction: direction,
                 InstrumentName: instrumentName,
-                Amount: amount,
+                Amount: $('#ammount-spinner').val(),
             }
         }).then(function successCallback(response) {
             alertify.success(direction + " position opened successfuly");

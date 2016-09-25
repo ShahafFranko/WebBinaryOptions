@@ -5,6 +5,7 @@
 <head>
     <link href="~/Content/admin.css" rel="stylesheet">
     <script src="~/Scripts/Controllers/adminController.js"></script>
+    <script src="~/Scripts/lib/bootstrap-datepicker.min.js"></script>
     <title>Admin</title>
 </head>
 <body ng-controller="adminController">
@@ -32,21 +33,6 @@
                 </div>
                 <button type="button" ng-click="createAccount()" class="btn btn-primary">Create</button>
             </div>
-
-            <table class="table" ng-if="accounts.length > 0">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Balance</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="account in accounts">
-                        <td>{{account.Username}}</td>
-                        <td>{{account.Balance}}</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 
@@ -68,9 +54,44 @@
     </div>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Richest Traders</div>
+        <div class="panel-heading">Accounts</div>
         <div class="panel-body">
+            <table class="table" ng-if="accounts.length > 0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="account in accounts">
+                        <td>{{account.Username}}</td>
+                        <td>{{account.Balance}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Search For Positions</div>
+        <div class="panel-body">
+            
+            <div class="form-inline">
+                <div class="form-group" id="dates-container">
+                    <input type="text" id="from" ng-model="searchParams.openTime" placeholder="Open Time" class="form-control" />
+                    <input type="text" id="to" ng-model="searchParams.expireTime" placeholder="Expire Time" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input class="form-check-input" type="checkbox" ng-model="searchParams.wins">
+                    Wins Only
+                </div>
 
+                <div class="form-group">
+                    <input class="form-check-input" type="checkbox" ng-model="searchParams.descending">
+                    Order By Descending
+                </div>
+                <input type="button" class="btn btn-primary" ng-click="search()" value="Search"/>
+            </div>
         </div>
     </div>
 </body>

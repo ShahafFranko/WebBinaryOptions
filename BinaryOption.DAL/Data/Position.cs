@@ -24,5 +24,21 @@ namespace BinaryOptions.DAL.Data
 
         [ForeignKey("AccountId")]
         public Account Account { get; set; }
+
+        public bool IsWinning()
+        {
+            if (!ClosePrice.HasValue)
+            {
+                return false;
+            }
+
+            if ((Direction == Direction.High && ClosePrice > OpenPrice) ||
+                (Direction == Direction.Low && OpenPrice > ClosePrice))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

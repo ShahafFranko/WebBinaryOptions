@@ -23,6 +23,7 @@ namespace BinaryOptions.OptionServer.Handlers
             m_protocol = protocol;
             Receive<CreateAccountRequest>(r => Handle(r));
             Receive<AccountRequest>(r => Handle(r));
+            Receive<GetAccountRequest>(r => Handle(r));
         }
 
         private void Handle(CreateAccountRequest request)
@@ -65,18 +66,34 @@ namespace BinaryOptions.OptionServer.Handlers
                     return;
                 }
 
-                IList<PositionDto> positions = account.Positions.Where(p => p.AccountId == account.Id).Select(ConvertToDto).ToList();
-                
-                AccountReply reply = new AccountReply(account.Id, account.Username, account.Balance, positions);
-
-                Sender.Tell(reply, Self);
+                Sender.Tell(FromAccount(account), Self);
             }
         }
 
-        private PositionDto ConvertToDto(Position position)
+        private void Handle(GetAccountRequest request)
         {
-            return new PositionDto(position.Id, position.AccountId, position.InstrumentName, position.Amount, position.OpenTime, position.ExpireTime,
-                position.OpenPrice, position.ClosePrice, (BinaryOption.OptionServer.Contract.Entities.Direction) position.Direction);
+            using (BinaryOptionsContext ctx = BinaryOptionsContext.Create())
+            {
+                IEnumerable<Account> accounts = ctx.Accounts.ToList();
+
+                IList<AccountReply> accountsReply = accounts.Select(a => FromAccount(a)).ToList();
+
+                Sender.Tell(accountsReply, Self);
+            }
         }
+
+        private static PositionDto FromPosition(Position position)
+        {
+            return new PositionDto(position.Id, position.AccountId, position.InstrumentName, position.Amount,
+                position.OpenTime, position.ExpireTime, position.OpenPrice, position.ClosePrice,
+                (BinaryOption.OptionServer.Contract.Entities.Direction)position.Direction);
+        }
+
+        private static AccountReply FromAccount(Account account)
+        {
+            IList<PositionDto> positions = account.Positions.Select(FromPosition).OrderByDescending(p => p.ExpireTime).ToList();
+            return new AccountReply(account.Id, account.Username, account.Balance, positions);
+        }
+
     }
 }

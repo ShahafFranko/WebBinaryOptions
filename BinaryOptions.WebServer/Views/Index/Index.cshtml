@@ -5,7 +5,9 @@
 <head>
     <link href="~/Content/index.css" rel="stylesheet">
     <link href="~/Content/chart.css" rel="stylesheet">
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet">
     <script src="~/Scripts/lib/d3.v3.js"></script>
+    <script src="~/Scripts/lib/jquery-ui-1.12.1.min.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
@@ -27,13 +29,17 @@
     @*instruments & chart*@
     <div class="col-md-12">
         <div class="col-md-4">
+            <div class="form-group">
+                <span>Amount:</span>
+                <input id="ammount-spinner" class="form-control" name="value" value="10">
+            </div>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Instrument</th>
                         <th>Rate</th>
-                        <th>Open Up</th>
-                        <th>Open Down</th>
+                        <th>High</th>
+                        <th>Low</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,17 +47,17 @@
                         <td ng-class="instrument.trend == 'up' ? 'trend-up' : 'trend-down'">{{instrument.name}}</td>
                         <td ng-class="instrument.trend == 'up' ? 'trend-up' : 'trend-down'">{{instrument.rate}}</td>
                         <td>
-                            <span class="trend-up fa fa-thumbs-o-up" ng-click="openHighPosition('test',instrument.name,1)"></span>
+                            <span class="trend-up fa fa-thumbs-o-up" ng-click="openHighPosition('test',instrument.name)"></span>
                         </td>
                         <td>
-                            <span class="trend-down fa fa-thumbs-o-down" ng-click="openLowPosition('test',instrument.name,1)"></span>
+                            <span class="trend-down fa fa-thumbs-o-down" ng-click="openLowPosition('test',instrument.name)"></span>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="col-md-8">
-            <svg style="width: 100%"/>
+            <svg style="width: 100%" />
         </div>
     </div>
 
@@ -82,7 +88,7 @@
                         <td>{{position.expireTime}}</td>
                         <td>{{position.closePrice}}</td>
                         <td>
-                            {{(position.direction == 'High' && position.openPrice < position.closePrice ? 'WIN' : 'Loose')}}
+                            {{((position.direction == 'High' && position.openPrice < position.closePrice) || (position.direction == 'Low' && position.openPrice > position.closePrice)) ? 'WIN' : 'Loose'}}
                         </td>
                     </tr>
                 </tbody>

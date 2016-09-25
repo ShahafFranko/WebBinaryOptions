@@ -73,6 +73,7 @@ namespace BinaryOptions.OptionServer
             builder.RegisterType<LoginRequestHandler>().SingleInstance();
             builder.RegisterType<OpenPositionCommandHandler>().SingleInstance();
             builder.RegisterType<ClosePositionCommandHandler>().SingleInstance();
+            builder.RegisterType<SearchRequestsHandler>().SingleInstance();
             builder.RegisterType<AccountsHandler>().SingleInstance();
             builder.RegisterType<RatesService>().SingleInstance();
         }
@@ -109,6 +110,7 @@ namespace BinaryOptions.OptionServer
             var positionsHandler = actorSystem.ActorOf(actorSystem.DI().Props<OpenPositionCommandHandler>(), "OpenPositionCommandHandler");
             var loginHandler = actorSystem.ActorOf(actorSystem.DI().Props<LoginRequestHandler>(), "LoginRequestHandler");
             var closePositionCommandHandler = actorSystem.ActorOf(actorSystem.DI().Props<ClosePositionCommandHandler>(), "ClosePositionCommandHandler");
+            var searchRequestsHandler = actorSystem.ActorOf(actorSystem.DI().Props<SearchRequestsHandler>(), "SearchRequestsHandler");
         }
     }
 }

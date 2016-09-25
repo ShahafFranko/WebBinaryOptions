@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using Akka.Actor;
 using BinaryOption.OptionServer.Contract.DTO;
 using BinaryOption.OptionServer.Contract.Requests;
-using BinaryOptions.WebServer.Auth;
 using BinaryOptions.WebServer.Models;
 
 namespace BinaryOptions.WebServer.Controllers
@@ -34,6 +33,32 @@ namespace BinaryOptions.WebServer.Controllers
             var response = await Global.ActorSystem.ActorSelection(accountsHandlerPath).Ask<IReply>(request) as AccountReply;
 
             return Json(AccountModel.FromDto(response));
+        }
+
+        [System.Web.Mvc.HttpGet]
+        public async Task<JsonResult> Accounts()
+        {
+            // First lets create path to our handler.
+            string accountsHandlerPath = Global.Protocol.GenerateTcpPath("AccountsHandler");
+
+            // now let's send account creation request.
+            var request = new GetAccountRequest();
+            var response = await Global.ActorSystem.ActorSelection(accountsHandlerPath).Ask<IEnumerable<AccountReply>>(request);
+
+            return Json(response.Select(AccountModel.FromDto), JsonRequestBehavior.AllowGet);
+        }
+
+        [System.Web.Mvc.HttpGet]
+        public async Task<JsonResult> Search([FromUri]PositionsSearchModel searchModel)
+        {
+            // First lets create path to our handler.
+            string searchHandlerPath = Global.Protocol.GenerateTcpPath("SearchRequestsHandler");
+
+            // now let's send account creation request.
+            var request = new PositionsSearchRequest(searchModel.OpenTime, searchModel.ExpireTime, searchModel.Descending, searchModel.Wins);
+            var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<IEnumerable<PositionDto>>(request);
+
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
     }
 }

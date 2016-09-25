@@ -9,24 +9,25 @@ namespace BinaryOption.DAL.Repositories
 {
     public class InstrumentRateRepository
     {
-        private Dictionary<Guid, List<InstrumentRate>> m_repo = new Dictionary<Guid, List<InstrumentRate>>();
+        private readonly Dictionary<Guid, List<InstrumentRate>> m_cache;
 
         public InstrumentRateRepository()
         {
+            m_cache = new Dictionary<Guid, List<InstrumentRate>>();
         }
 
         public void UpdateRate(InstrumentRate instrumentRate)
         {
-            if (!m_repo.ContainsKey(instrumentRate.Id))
+            if (!m_cache.ContainsKey(instrumentRate.Id))
             {
-                m_repo.Add(instrumentRate.Id, new List<InstrumentRate>());
+                m_cache.Add(instrumentRate.Id, new List<InstrumentRate>());
             }
-            m_repo[instrumentRate.Id].Add(instrumentRate);
+            m_cache[instrumentRate.Id].Add(instrumentRate);
         }
 
         public IList<InstrumentRate> GetInstrumentById(Guid instrumentId) 
         {
-            return m_repo[instrumentId];
+            return m_cache[instrumentId];
         }
 
     }
