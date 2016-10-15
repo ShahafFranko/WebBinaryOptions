@@ -1,5 +1,6 @@
 body {
     color: whitesmoke;
+    min-height: 100%;
 }
 
 .login {
@@ -25,4 +26,11 @@ body {
 .trend-down {
     color: #FE1A00;
     cursor: pointer;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    font-size: smaller;
 }

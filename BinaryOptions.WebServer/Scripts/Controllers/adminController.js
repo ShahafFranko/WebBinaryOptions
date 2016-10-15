@@ -2,6 +2,7 @@
 app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($scope, hubProxy, $http) {
     
     $scope.accounts = [];
+    $scope.positions = [];
 
     //account creation
     $scope.username;
@@ -72,8 +73,17 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
                 wins: $scope.searchParams.wins,
             }
         }).then(function successCallback(response) {
-            alertify.success("query is gooooooooooooooooooood");
-            //$scope.accounts = response.data;
+            for (var i = 0; i < response.data.length; i++) {
+                $scope.positions.push({
+                    openTime: moment(parseInt(response.data[i].OpenTime.substr(6))).format("DD/MM/YYYY HH:mm:ss"),
+                    instrumentName: response.data[i].InstrumentName,
+                    direction: response.data[i].Direction,
+                    amount: response.data[i].Amount,
+                    openPrice: response.data[i].OpenPrice,
+                    expireTime: moment(parseInt(response.data[i].ExpireTime.substr(6))).format("DD/MM/YYYY HH:mm:ss"),
+                    closePrice: response.data[i].ClosePrice
+                });
+            }
         }, function errorCallback(response) {
             alertify.error("Oh crap, search failed.");
         });

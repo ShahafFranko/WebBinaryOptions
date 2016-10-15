@@ -56,7 +56,7 @@ namespace BinaryOptions.WebServer.Controllers
 
             // now let's send account creation request.
             var request = new PositionsSearchRequest(searchModel.OpenTime, searchModel.ExpireTime, searchModel.Descending, searchModel.Wins);
-            var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<IEnumerable<PositionDto>>(request);
+            var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<IList<PositionDto>>(request);
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }

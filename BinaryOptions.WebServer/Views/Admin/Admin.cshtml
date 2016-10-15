@@ -92,6 +92,34 @@
                 </div>
                 <input type="button" class="btn btn-primary" ng-click="search()" value="Search"/>
             </div>
+            <table class="table" ng-if="positions.length > 0">
+                <thead>
+                    <tr>
+                        <th>Open Time</th>
+                        <th>Instrument</th>
+                        <th>Direction</th>
+                        <th>Amount</th>
+                        <th>Open Rate</th>
+                        <th>Expire Time</th>
+                        <th>Close Rate</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="position in positions">
+                        <td>{{position.openTime}}</td>
+                        <td>{{position.instrumentName}}</td>
+                        <td>{{position.direction}}</td>
+                        <td>{{position.amount}}</td>
+                        <td>{{position.openPrice}}</td>
+                        <td>{{position.expireTime}}</td>
+                        <td>{{position.closePrice}}</td>
+                        <td>
+                            {{((position.direction == 'High' && position.openPrice < position.closePrice) || (position.direction == 'Low' && position.openPrice > position.closePrice)) ? 'WIN' : 'Loose'}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
