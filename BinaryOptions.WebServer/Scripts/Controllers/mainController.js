@@ -2,9 +2,12 @@
 app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$interval', function ($scope, hubProxy, $http, $cookies, $interval) {
     
     $scope.instruments = [];
+    $scope.newsFeed = [];
+    $scope.newsFeedIndex = 0;
     $scope.account = null;
 
     var hub = hubProxy('http://localhost:2641/', 'tradingHub');
+
 
     hub.on('onInstrumentUpdated', function(instrument) {
         for (var i = 0; i < $scope.instruments.length; i++) {
@@ -45,7 +48,7 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$i
     $scope.$on('connectionEstablished', function () {
         // success notification
         alertify.success("Connected to server.");
-
+        $scope.getNewsFeed();
         // get accounts details during load.
         $scope.getAccountDetails();
 
@@ -248,8 +251,43 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$i
         }
     }
 
-    function test(){
+    $scope.getNewsFeed = function () {
+        $http({
+            method: 'GET',
+            url: 'https://newsapi.org/v1/articles',
+            params:
+                {
+                    source: 'the-wall-street-journal',
+                    sortBy: 'top',
+                    apiKey: 'bb71167b7edf48829ab0c49b7f4500d2'
+                }
+        }).then(function successCallback(response) {
+            alertify.success("Got news feed successfuly.");
+            if (response.data.articles != null) {
+                if (response.data.articles.length > 0) {
+                    $scope.newsFeed = response.data.articles
+                    $interval($scope.changeNewsFeedIndex, 5000);
+                }
+            }
+        }, function errorCallback(response) {
+            alertify.error("Oh crap, failed to get news feed.");
+        });
+    };
 
+    $scope.changeNewsFeedIndex = function () {
+        if ($scope.newsFeed != null) {
+            if ($scope.newsFeed.length > 0){
+                if ($scope.newsFeedIndex == $scope.newsFeed.length - 1) {
+                    $scope.newsFeedIndex = 0;
+                } else {
+                    $scope.newsFeedIndex++;
+                }
+            } else {
+                $scope.newsFeedIndex = 0;
+            }
+        } else {
+            $scope.newsFeedIndex = 0;
+        }
     };
 
 }]);

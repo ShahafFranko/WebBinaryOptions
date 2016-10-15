@@ -28,10 +28,10 @@
 
     @*instruments & chart*@
     <div class="col-md-12">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="form-group">
                 <span>Amount:</span>
-                <input id="ammount-spinner" class="form-control" name="value" value="10">
+                <input id="ammount-spinner" class="form-control" name="value" value="10" type="number">
             </div>
             <table class="table">
                 <thead>
@@ -56,8 +56,24 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
             <svg style="width: 100%" />
+        </div>
+        <div class="col-md-3" id="newsFeed">
+            <h3>News feed</h3>
+            <div ng-if="newsFeed.length > 0">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="{{newsFeed[newsFeedIndex].url}}">
+                            <img class="media-object" ng-src="{{newsFeed[newsFeedIndex].urlToImage}}" width="64" height="64">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{newsFeed[newsFeedIndex].title}}</h4>
+                        {{newsFeed[newsFeedIndex].description}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
