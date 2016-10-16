@@ -21,6 +21,7 @@ namespace BinaryOptions.OptionServer.Handlers
         public SearchRequestsHandler()
         {
             Receive<PositionsSearchRequest>(c => Handle(c));
+            Receive<WinLoseRequest>(c => Handle(c));
         }
 
         private void Handle(PositionsSearchRequest request)
@@ -55,27 +56,45 @@ namespace BinaryOptions.OptionServer.Handlers
             }
         }
 
+        private void Handle(WinLoseRequest request)
+        {
+            try
+            {
+                using (var ctx = BinaryOptionsContext.Create())
+                {
+                    WinLoseReply reply = null;
+
+                    IQueryable<Position> positions = ctx.Positions;
+                    int totalPositions = positions.Count();
+                    if (totalPositions == 0)
+                    {
+                        reply = new WinLoseReply(0, 0);
+
+                        Sender.Tell(reply, Self);
+                        return;
+                    }
+
+                    double winningPositions = positions.Count(p => (p.Direction == Direction.High && p.ClosePrice > p.OpenPrice) ||
+                                                        (p.Direction == Direction.Low && p.OpenPrice > p.ClosePrice));
+
+                    double losingPositions = totalPositions - winningPositions;
+
+                    reply = new WinLoseReply(winningPositions / totalPositions, losingPositions / totalPositions);
+                    
+                    Sender.Tell(reply, Self);
+                }
+            }
+            catch (Exception ex)
+            {
+                Context.GetLogger().Error("Search Failed", ex);
+            }
+        }
+
         private static PositionDto FromPosition(Position position)
         {
             return new PositionDto(position.Id, position.AccountId, position.InstrumentName, position.Amount,
                 position.OpenTime, position.ExpireTime, position.OpenPrice, position.ClosePrice,
                 (BinaryOption.OptionServer.Contract.Entities.Direction)position.Direction);
-        }
-
-        public bool IsWinning(Position position)
-        {
-            if (!position.ClosePrice.HasValue)
-            {
-                return false;
-            }
-
-            if ((position.Direction == Direction.High && position.ClosePrice > position.OpenPrice) ||
-                (position.Direction == Direction.Low && position.OpenPrice > position.ClosePrice))
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

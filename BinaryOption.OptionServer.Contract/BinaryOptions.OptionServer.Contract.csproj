@@ -50,6 +50,7 @@
     <Compile Include="DTO\InstrumentsReply.cs" />
     <Compile Include="DTO\IReply.cs" />
     <Compile Include="DTO\PositionDto.cs" />
+    <Compile Include="DTO\WinLoseReply.cs" />
     <Compile Include="Entities\Direction.cs" />
     <Compile Include="Events\AccountUpdated.cs" />
     <Compile Include="Events\InstrumentUpdated.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol.cs" />
     <Compile Include="DTO\LoginReply.cs" />
+    <Compile Include="Requests\DeleteAccountRequest.cs" />
     <Compile Include="Requests\GetAccountRequest.cs" />
     <Compile Include="Requests\AccountRequest.cs" />
     <Compile Include="Requests\CreateAccountRequest.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="Requests\LoginRequest.cs" />
     <Compile Include="Requests\OpenPositionRequest.cs" />
     <Compile Include="Requests\PositionsSearchRequest.cs" />
+    <Compile Include="Requests\WinLoseRequest.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

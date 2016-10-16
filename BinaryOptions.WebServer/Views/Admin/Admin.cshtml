@@ -4,8 +4,8 @@
 
 <head>
     <link href="~/Content/admin.css" rel="stylesheet">
-    <script src="~/Scripts/Controllers/adminController.js"></script>
     <script src="~/Scripts/lib/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/lib/d3.v3.js"></script>
     <title>Admin</title>
 </head>
 <body ng-controller="adminController">
@@ -61,12 +61,16 @@
                     <tr>
                         <th>Name</th>
                         <th>Balance</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="account in accounts">
                         <td>{{account.Username}}</td>
                         <td>{{account.Balance}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" ng-click="deleteUser()">Delete</button>   
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -122,4 +126,19 @@
             </table>
         </div>
     </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Win/Loose</div>
+        <div class="panel-body">
+            <div id="pie" class="col-md-4">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <span style="color:#5CB811">Win</span>
+                        <span style="color:#FE1A00">Lose</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="~/Scripts/Controllers/adminController.js"></script>
+

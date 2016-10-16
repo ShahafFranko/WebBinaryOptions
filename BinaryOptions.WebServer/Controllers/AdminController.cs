@@ -60,5 +60,31 @@ namespace BinaryOptions.WebServer.Controllers
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+
+        [System.Web.Mvc.HttpGet]
+        public async Task<JsonResult> GetWinLose()
+        {
+            // First lets create path to our handler.
+            string searchHandlerPath = Global.Protocol.GenerateTcpPath("SearchRequestsHandler");
+
+            // now let's send account creation request.
+            var request = new WinLoseRequest();
+            var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<WinLoseReply>(request);
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public async Task<JsonResult> Delete()
+        {
+            // First lets create path to our handler.
+            string searchHandlerPath = Global.Protocol.GenerateTcpPath("AccountsHandler");
+
+            // now let's send account creation request.
+            var request = new WinLoseRequest();
+            var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<WinLoseReply>(request);
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
     }
 }

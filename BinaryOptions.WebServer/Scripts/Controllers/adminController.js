@@ -1,6 +1,6 @@
 ﻿
 app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($scope, hubProxy, $http) {
-    
+
     $scope.accounts = [];
     $scope.positions = [];
 
@@ -31,9 +31,10 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
         // success notification
         alertify.success("Admin Connected to server.");
         $scope.getAccounts();
+        $scope.getWinLoseData();
     });
 
-    $scope.createAccount = function() {
+    $scope.createAccount = function () {
         $http({
             method: 'POST',
             url: '/admin/create',
@@ -63,6 +64,8 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
     };
 
     $scope.search = function () {
+        $scope.positions = [];
+
         $http({
             method: 'GET',
             url: '/admin/Search',
@@ -89,6 +92,29 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
         });
     };
 
+    $scope.getWinLoseData = function () {
+        $http({
+            method: 'GET',
+            url: '/admin/GetWinLose'
+        }).then(function successCallback(response) {
+            $scope.setupPieChart(response.data);
+        }, function errorCallback(response) {
+            console.log('failed to retrieve pie chart data');
+        });
+    };
+
+    $scope.deleteUser = function () {
+        $http({
+            method: 'POST',
+            url: '/admin/Delete'
+        }).then(function successCallback(response) {
+            $scope.getAccounts();
+            alertify.success("User delete successfuly.");
+        }, function errorCallback(response) {
+            console.log('failed to retrieve pie chart data');
+        });
+    };
+
     $scope.logOut = function () {
         $http({
             method: 'POST',
@@ -99,4 +125,36 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
             alertify.error("Failed to log out.");
         });
     };
+
+    $scope.setupPieChart = function (data) {
+        var path = svg.selectAll('path')
+            .data(pie(data.Data))
+            .enter()
+            .append('path')
+            .attr('d', arc) 
+            .attr('fill', function (d, i) {
+                return d.data.Key == "Win" ? '#5CB811' : '#FE1A00';
+        });
+    };
+
+    var width = 360;
+    var height = 360;
+    var radius = Math.min(width, height) / 2;
+
+    var svg = d3.select('#pie')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
+      .append('g')
+      .attr('transform', 'translate(' + (width / 2) +
+        ',' + (height / 2) + ')');
+
+    var arc = d3.svg.arc()
+      .outerRadius(radius);
+
+    var pie = d3.layout.pie()
+      .value(function (d) {
+          return d.Value;
+      })
+      .sort(null);
 }]);
