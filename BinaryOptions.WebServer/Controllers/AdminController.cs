@@ -41,7 +41,6 @@ namespace BinaryOptions.WebServer.Controllers
             // First lets create path to our handler.
             string accountsHandlerPath = Global.Protocol.GenerateTcpPath("AccountsHandler");
 
-            // now let's send account creation request.
             var request = new GetAccountRequest();
             var response = await Global.ActorSystem.ActorSelection(accountsHandlerPath).Ask<IEnumerable<AccountReply>>(request);
 
@@ -54,7 +53,6 @@ namespace BinaryOptions.WebServer.Controllers
             // First lets create path to our handler.
             string searchHandlerPath = Global.Protocol.GenerateTcpPath("SearchRequestsHandler");
 
-            // now let's send account creation request.
             var request = new PositionsSearchRequest(searchModel.OpenTime, searchModel.ExpireTime, searchModel.Descending, searchModel.Wins);
             var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<IList<PositionDto>>(request);
 
@@ -67,7 +65,6 @@ namespace BinaryOptions.WebServer.Controllers
             // First lets create path to our handler.
             string searchHandlerPath = Global.Protocol.GenerateTcpPath("SearchRequestsHandler");
 
-            // now let's send account creation request.
             var request = new WinLoseRequest();
             var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<WinLoseReply>(request);
 
@@ -75,14 +72,25 @@ namespace BinaryOptions.WebServer.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public async Task<JsonResult> Delete()
+        public async Task<JsonResult> Delete([FromBody] Guid accountId)
         {
             // First lets create path to our handler.
-            string searchHandlerPath = Global.Protocol.GenerateTcpPath("AccountsHandler");
+            string accountsHandlerPath = Global.Protocol.GenerateTcpPath("AccountsHandler");
 
-            // now let's send account creation request.
-            var request = new WinLoseRequest();
-            var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<WinLoseReply>(request);
+            var request = new DeleteAccountRequest(accountId);
+            var response = await Global.ActorSystem.ActorSelection(accountsHandlerPath).Ask<bool>(request);
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public async Task<JsonResult> Deposit([FromBody] AccountDepositModel depositModel)
+        {
+            // First lets create path to our handler.
+            string accountsHandlerPath = Global.Protocol.GenerateTcpPath("AccountsHandler");
+
+            var request = new AccountDepositRequest(depositModel.Username, depositModel.Amount);
+            var response = await Global.ActorSystem.ActorSelection(accountsHandlerPath).Ask<bool>(request);
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }

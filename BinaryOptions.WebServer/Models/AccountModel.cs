@@ -8,6 +8,7 @@ namespace BinaryOptions.WebServer.Models
 {
     public class AccountModel
     {
+        public Guid Id { get; set; }
         public string Username { get; set; }
         public double Balance { get; set; }
 
@@ -15,6 +16,7 @@ namespace BinaryOptions.WebServer.Models
         {
             return new AccountModel()
             {
+                Id = accountDto.Id,
                 Username =  accountDto.Username,
                 Balance = accountDto.Balance
             };

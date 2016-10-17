@@ -42,13 +42,13 @@
             <div class="form-inline">
                 <div class="form-group">
                     <label for="username">User:</label>
-                    <input type="text" class="form-control" id="username">
+                    <input type="text" ng-model="depositAccount" class="form-control" id="username">
                 </div>
                 <div class="form-group">
                     <label for="balance">Balance:</label>
-                    <input type="text" class="form-control" id="balance">
+                    <input type="text" ng-model="depositBalance" class="form-control" id="balance">
                 </div>
-                <button type="button" class="btn btn-primary">Deposit</button>
+                <button type="button" ng-click="deposit()" class="btn btn-primary">Deposit</button>
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
                         <td>{{account.Username}}</td>
                         <td>{{account.Balance}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary" ng-click="deleteUser()">Delete</button>   
+                            <button type="button" class="btn btn-primary" ng-click="deleteUser(account.Id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -79,7 +79,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Search For Positions</div>
         <div class="panel-body">
-            
+
             <div class="form-inline">
                 <div class="form-group" id="dates-container">
                     <input type="text" id="from" ng-model="searchParams.openTime" placeholder="Open Time" class="form-control" />
@@ -94,7 +94,7 @@
                     <input class="form-check-input" type="checkbox" ng-model="searchParams.descending">
                     Order By Descending
                 </div>
-                <input type="button" class="btn btn-primary" ng-click="search()" value="Search"/>
+                <input type="button" class="btn btn-primary" ng-click="search()" value="Search" />
             </div>
             <table class="table" ng-if="positions.length > 0">
                 <thead>
@@ -127,13 +127,13 @@
         </div>
     </div>
     <div class="panel panel-primary">
-        <div class="panel-heading">Win/Loose</div>
+        <div class="panel-heading">Trading Data</div>
         <div class="panel-body">
             <div id="pie" class="col-md-4">
                 <div class="form-inline">
                     <div class="form-group">
-                        <span style="color:#5CB811">Win</span>
-                        <span style="color:#FE1A00">Lose</span>
+                        <span style="color:#5CB811">Win {{tradingRatio.Data[0].Value}}%</span>
+                        <span style="color:#FE1A00">Lose {{tradingRatio.Data[1].Value}}%</span>
                     </div>
                 </div>
             </div>

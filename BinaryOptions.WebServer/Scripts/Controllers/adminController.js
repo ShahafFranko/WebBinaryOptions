@@ -97,19 +97,41 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
             method: 'GET',
             url: '/admin/GetWinLose'
         }).then(function successCallback(response) {
+            $scope.tradingRatio = response.data;
             $scope.setupPieChart(response.data);
         }, function errorCallback(response) {
             console.log('failed to retrieve pie chart data');
         });
     };
 
-    $scope.deleteUser = function () {
+    $scope.deleteUser = function (accountId) {
         $http({
             method: 'POST',
-            url: '/admin/Delete'
+            url: '/admin/Delete',
+            data:
+            {
+                accountId: accountId
+            }
         }).then(function successCallback(response) {
             $scope.getAccounts();
             alertify.success("User delete successfuly.");
+        }, function errorCallback(response) {
+            console.log('failed to retrieve pie chart data');
+        });
+    };
+
+    $scope.deposit = function () {
+        $http({
+            method: 'POST',
+            url: '/admin/Deposit',
+            data:
+            {
+                username: $scope.depositAccount,
+                amount: $scope.depositBalance,
+            }
+        }).then(function successCallback(response) {
+            $scope.getAccounts();
+            alertify.success("balance updated successfuly.");
         }, function errorCallback(response) {
             console.log('failed to retrieve pie chart data');
         });

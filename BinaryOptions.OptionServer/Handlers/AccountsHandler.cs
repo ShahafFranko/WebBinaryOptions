@@ -24,6 +24,8 @@ namespace BinaryOptions.OptionServer.Handlers
             Receive<CreateAccountRequest>(r => Handle(r));
             Receive<AccountRequest>(r => Handle(r));
             Receive<GetAccountRequest>(r => Handle(r));
+            Receive<DeleteAccountRequest>(r => Handle(r));
+            Receive<AccountDepositRequest>(r => Handle(r));
         }
 
         private void Handle(CreateAccountRequest request)
@@ -79,6 +81,42 @@ namespace BinaryOptions.OptionServer.Handlers
                 IList<AccountReply> accountsReply = accounts.Select(a => FromAccount(a)).ToList();
 
                 Sender.Tell(accountsReply, Self);
+            }
+        }
+
+        private void Handle(DeleteAccountRequest request)
+        {
+            using (var ctx = BinaryOptionsContext.Create())
+            {
+                Account account = ctx.Accounts.Find(request.AccountId);
+
+                if (account == null)
+                {
+                    Sender.Tell(false, Self);
+                    return;
+                }
+
+                ctx.Accounts.Remove(account);
+                ctx.SaveChanges();
+                Sender.Tell(true, Self);
+            }
+        }
+
+        private void Handle(AccountDepositRequest request)
+        {
+            using (var ctx = BinaryOptionsContext.Create())
+            {
+                Account account = ctx.Accounts.SingleOrDefault(a => a.Username == request.Username);
+
+                if (account == null)
+                {
+                    Sender.Tell(false, Self);
+                    return;
+                }
+
+                account.Balance += request.Amount;
+                ctx.SaveChanges();
+                Sender.Tell(true, Self);
             }
         }
 

@@ -11,14 +11,10 @@ namespace BinaryOption.OptionServer.Contract.DTO
         public WinLoseReply(double winPrecentage, double losePrecentage)
         {
             Data = new List<KeyValuePair<string, double>>();
-            Data.Add(new KeyValuePair<string, double>("Win", winPrecentage * 100));
-            Data.Add(new KeyValuePair<string, double>("Lose", losePrecentage * 100));
-            //WinPrecentage = winPrecentage*100;
-            //LosePrecentage = losePrecentage * 100;
+            Data.Add(new KeyValuePair<string, double>("Win", Math.Round(winPrecentage * 100, 2)));
+            Data.Add(new KeyValuePair<string, double>("Lose", Math.Round(losePrecentage * 100, 2)));
         }
 
         public IList<KeyValuePair<string, double>> Data { get; private set; }
-        //public double WinPrecentage { get; private set; }
-        //public double LosePrecentage { get; private set; }
     }
 }
