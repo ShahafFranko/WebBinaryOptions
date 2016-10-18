@@ -60,7 +60,7 @@ namespace BinaryOptions.WebServer.Controllers
         }
 
         [System.Web.Mvc.HttpGet]
-        public async Task<JsonResult> GetWinLose()
+        public async Task<JsonResult> TradingData()
         {
             // First lets create path to our handler.
             string searchHandlerPath = Global.Protocol.GenerateTcpPath("SearchRequestsHandler");

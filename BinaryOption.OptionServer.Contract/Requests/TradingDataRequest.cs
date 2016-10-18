@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BinaryOption.OptionServer.Contract.Requests
 {
-    public class WinLoseRequest
+    public class TradingDataRequest
     {
     }
 }

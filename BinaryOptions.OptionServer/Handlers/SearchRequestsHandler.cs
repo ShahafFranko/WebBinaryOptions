@@ -21,7 +21,7 @@ namespace BinaryOptions.OptionServer.Handlers
         public SearchRequestsHandler()
         {
             Receive<PositionsSearchRequest>(c => Handle(c));
-            Receive<WinLoseRequest>(c => Handle(c));
+            Receive<TradingDataRequest>(c => Handle(c));
         }
 
         private void Handle(PositionsSearchRequest request)
@@ -56,19 +56,19 @@ namespace BinaryOptions.OptionServer.Handlers
             }
         }
 
-        private void Handle(WinLoseRequest request)
+        private void Handle(TradingDataRequest request)
         {
             try
             {
                 using (var ctx = BinaryOptionsContext.Create())
                 {
-                    WinLoseReply reply = null;
+                    TradingDataReply reply = null;
 
                     IQueryable<Position> positions = ctx.Positions;
                     int totalPositions = positions.Count();
                     if (totalPositions == 0)
                     {
-                        reply = new WinLoseReply(0, 0);
+                        reply = new TradingDataReply(0, 0, positions.Count());
 
                         Sender.Tell(reply, Self);
                         return;
@@ -79,7 +79,7 @@ namespace BinaryOptions.OptionServer.Handlers
 
                     double losingPositions = totalPositions - winningPositions;
 
-                    reply = new WinLoseReply(winningPositions / totalPositions, losingPositions / totalPositions);
+                    reply = new TradingDataReply(winningPositions / totalPositions, losingPositions / totalPositions, positions.Count());
                     
                     Sender.Tell(reply, Self);
                 }

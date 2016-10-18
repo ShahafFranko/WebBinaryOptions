@@ -50,7 +50,7 @@
     <Compile Include="DTO\InstrumentsReply.cs" />
     <Compile Include="DTO\IReply.cs" />
     <Compile Include="DTO\PositionDto.cs" />
-    <Compile Include="DTO\WinLoseReply.cs" />
+    <Compile Include="DTO\TradingDataReply.cs" />
     <Compile Include="Entities\Direction.cs" />
     <Compile Include="Events\AccountUpdated.cs" />
     <Compile Include="Events\InstrumentUpdated.cs" />
@@ -70,7 +70,7 @@
     <Compile Include="Requests\LoginRequest.cs" />
     <Compile Include="Requests\OpenPositionRequest.cs" />
     <Compile Include="Requests\PositionsSearchRequest.cs" />
-    <Compile Include="Requests\WinLoseRequest.cs" />
+    <Compile Include="Requests\TradingDataRequest.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
