@@ -65,8 +65,8 @@ namespace BinaryOptions.WebServer.Controllers
             // First lets create path to our handler.
             string searchHandlerPath = Global.Protocol.GenerateTcpPath("SearchRequestsHandler");
 
-            var request = new WinLoseRequest();
-            var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<WinLoseReply>(request);
+            var request = new TradingDataRequest();
+            var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<TradingDataReply>(request);
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }

@@ -129,7 +129,7 @@ namespace BinaryOptions.OptionServer.Handlers
 
         private static AccountReply FromAccount(Account account)
         {
-            IList<PositionDto> positions = account.Positions.Select(FromPosition).OrderByDescending(p => p.ExpireTime).ToList();
+            IList<PositionDto> positions = account.Positions.Select(FromPosition).OrderByDescending(p => p.OpenTime).ToList();
             return new AccountReply(account.Id, account.Username, account.Balance, positions);
         }
 

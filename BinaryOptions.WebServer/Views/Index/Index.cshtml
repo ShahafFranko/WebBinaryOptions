@@ -31,7 +31,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 <span>Amount:</span>
-                <input id="ammount-spinner" class="form-control" name="value" value="10" type="number">
+                <input id="ammount-spinner" class="form-control amount" name="value" value="10" type="number">
             </div>
             <table class="table">
                 <thead>
@@ -60,7 +60,7 @@
             <svg style="width: 100%" />
         </div>
         <div class="col-md-3" id="newsFeed">
-            <h3>News feed</h3>
+            <h3  class="news-feed-header">News feed</h3>
             <div ng-if="newsFeed.length > 0">
                 <div class="media">
                     <div class="media-left">
@@ -70,7 +70,8 @@
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">{{newsFeed[newsFeedIndex].title}}</h4>
-                        {{newsFeed[newsFeedIndex].description}}
+                        <div class="news-data">{{newsFeed[newsFeedIndex].description}}</div>
+                     
                     </div>
                 </div>
             </div>
@@ -104,7 +105,8 @@
                         <td>{{position.expireTime}}</td>
                         <td>{{position.closePrice}}</td>
                         <td>
-                            {{((position.direction == 'High' && position.openPrice < position.closePrice) || (position.direction == 'Low' && position.openPrice > position.closePrice)) ? 'WIN' : 'Loose'}}
+                            <i class="fa fa-clock-o" aria-hidden="true" ng-show="{{getPositionStatus(position)  == 'Pending'}}"></i>
+                            <span ng-class="getPositionCssClass(position)">{{getPositionStatus(position)}}</span>
                         </td>
                     </tr>
                 </tbody>

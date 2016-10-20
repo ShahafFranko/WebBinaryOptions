@@ -95,10 +95,11 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
     $scope.getWinLoseData = function () {
         $http({
             method: 'GET',
-            url: '/admin/GetWinLose'
+            url: '/admin/TradingData'
         }).then(function successCallback(response) {
             $scope.tradingRatio = response.data;
-            $scope.setupPieChart(response.data);
+            $scope.setupPieChart($scope.tradingRatio.WinLoseRatio);
+            $scope.setupHighLowPieChart($scope.tradingRatio.HighLowRatio);
         }, function errorCallback(response) {
             console.log('failed to retrieve pie chart data');
         });
@@ -149,8 +150,29 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
     };
 
     $scope.setupPieChart = function (data) {
+        var width = 360;
+        var height = 360;
+        var radius = Math.min(width, height) / 2;
+
+        var svg = d3.select('#pie')
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height)
+          .append('g')
+          .attr('transform', 'translate(' + (width / 2) +
+            ',' + (height / 2) + ')');
+
+        var arc = d3.svg.arc()
+          .outerRadius(radius);
+
+        var pie = d3.layout.pie()
+          .value(function (d) {
+              return d.Value;
+          })
+          .sort(null);
+
         var path = svg.selectAll('path')
-            .data(pie(data.Data))
+            .data(pie(data))
             .enter()
             .append('path')
             .attr('d', arc) 
@@ -159,24 +181,56 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
         });
     };
 
-    var width = 360;
-    var height = 360;
-    var radius = Math.min(width, height) / 2;
+    $scope.setupHighLowPieChart = function (data) {
+        var width = 360;
+        var height = 360;
+        var radius = Math.min(width, height) / 2;
 
-    var svg = d3.select('#pie')
-      .append('svg')
-      .attr('width', width)
-      .attr('height', height)
-      .append('g')
-      .attr('transform', 'translate(' + (width / 2) +
-        ',' + (height / 2) + ')');
+        var svg = d3.select('#highLowPie')
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height)
+          .append('g')
+          .attr('transform', 'translate(' + (width / 2) +
+            ',' + (height / 2) + ')');
 
-    var arc = d3.svg.arc()
-      .outerRadius(radius);
+        var arc = d3.svg.arc()
+          .outerRadius(radius);
 
-    var pie = d3.layout.pie()
-      .value(function (d) {
-          return d.Value;
-      })
-      .sort(null);
+        var pie = d3.layout.pie()
+          .value(function (d) {
+              return d.Value;
+          })
+          .sort(null);
+
+        var path = svg.selectAll('path')
+            .data(pie(data))
+            .enter()
+            .append('path')
+            .attr('d', arc)
+            .attr('fill', function (d, i) {
+                return d.data.Key == "High" ? '#735DCB' : '#F75403';
+            });
+    };
+
+    //var width = 360;
+    //var height = 360;
+    //var radius = Math.min(width, height) / 2;
+
+    //var svg = d3.select('#pie')
+    //  .append('svg')
+    //  .attr('width', width)
+    //  .attr('height', height)
+    //  .append('g')
+    //  .attr('transform', 'translate(' + (width / 2) +
+    //    ',' + (height / 2) + ')');
+
+    //var arc = d3.svg.arc()
+    //  .outerRadius(radius);
+
+    //var pie = d3.layout.pie()
+    //  .value(function (d) {
+    //      return d.Value;
+    //  })
+    //  .sort(null);
 }]);

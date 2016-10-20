@@ -203,10 +203,12 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\videos\WhatAreBinaryOptions.mp4" />
     <Content Include="D3 LICENSE.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Content\fonts\ostrich-sans-regular.woff" />
     <None Include="Scripts\lib\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\lib\jquery-1.12.4.js" />
     <Content Include="Scripts\lib\jquery-1.12.4.min.js" />

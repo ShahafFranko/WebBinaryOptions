@@ -123,6 +123,25 @@ app.controller('mainController', ['$scope', 'hubProxy', '$http', '$cookies', '$i
         });
     };
 
+    $scope.getPositionStatus = function (position) {
+        if (!position.closePrice) {
+            return 'Pending';
+        } else {
+            return ((position.direction == 'High' && position.openPrice < position.closePrice) || (position.direction == 'Low' && position.openPrice > position.closePrice)) ? 'WIN' : 'Lose';
+        }
+    };
+
+    $scope.getPositionCssClass = function (position) {
+        var status = $scope.getPositionStatus(position);
+
+        if (status == 'WIN')
+            return 'trend-up';
+        else if (status == 'Lose')
+            return 'trend-down';
+        else
+            return '';
+    };
+
     $scope.logOut = function () {
         $http({
             method: 'POST',

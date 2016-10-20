@@ -65,10 +65,17 @@ namespace BinaryOptions.OptionServer.Handlers
                     TradingDataReply reply = null;
 
                     IQueryable<Position> positions = ctx.Positions;
+
+                    // group by direction and count each positions per direction.
+                    IList<KeyValuePair<string, int>> highLowPositions = 
+                        ctx.Positions.GroupBy(p => p.Direction.ToString())
+                        .ToDictionary(item => item.Key, item => item.Count())
+                        .ToList();
+
                     int totalPositions = positions.Count();
                     if (totalPositions == 0)
                     {
-                        reply = new TradingDataReply(0, 0, positions.Count());
+                        reply = new TradingDataReply(0, 0, highLowPositions);
 
                         Sender.Tell(reply, Self);
                         return;
@@ -79,7 +86,9 @@ namespace BinaryOptions.OptionServer.Handlers
 
                     double losingPositions = totalPositions - winningPositions;
 
-                    reply = new TradingDataReply(winningPositions / totalPositions, losingPositions / totalPositions, positions.Count());
+
+
+                    reply = new TradingDataReply(winningPositions / totalPositions, losingPositions / totalPositions, highLowPositions);
                     
                     Sender.Tell(reply, Self);
                 }
