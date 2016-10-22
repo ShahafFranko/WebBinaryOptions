@@ -21,6 +21,7 @@ namespace BinaryOptions.OptionServer.Handlers
         public SearchRequestsHandler()
         {
             Receive<PositionsSearchRequest>(c => Handle(c));
+            Receive<InstrumentSearchRequest>(c => Handle(c));
             Receive<TradingDataRequest>(c => Handle(c));
         }
 
@@ -42,10 +43,14 @@ namespace BinaryOptions.OptionServer.Handlers
 
                     if (request.SortDescending)
                     {
-                        positions = positions.OrderByDescending(p => p.Amount);
+                        positions = positions.OrderByDescending(p => p.OpenTime);
+                    }
+                    else
+                    {
+                        positions = positions.OrderBy(p => p.OpenTime);
                     }
 
-                    IEnumerable<PositionDto> results = positions.OrderBy(p => p.Amount).ToList().Select(FromPosition);
+                    IEnumerable<PositionDto> results = positions.ToList().Select(FromPosition);
 
                     Sender.Tell(results.ToList(), Self);
                 }
@@ -96,6 +101,29 @@ namespace BinaryOptions.OptionServer.Handlers
             catch (Exception ex)
             {
                 Context.GetLogger().Error("Search Failed", ex);
+            }
+        }
+
+        private void Handle(InstrumentSearchRequest request) 
+        {
+            using (var ctx = BinaryOptionsContext.Create())
+            {
+                IEnumerable<Instrument> instruments = Enumerable.Empty<Instrument>();
+
+                if (string.IsNullOrEmpty(request.Name))
+                {
+                    instruments = ctx.Instruments.Where(i => i.Payout >= request.Payout && i.IsEnabled == request.Disabled);
+                }
+                else
+                {
+                    instruments = ctx.Instruments.Where(i => i.Name.ToLower().Contains(request.Name.ToLower())
+                        && i.Payout >= request.Payout && i.IsEnabled == request.Disabled);
+                }
+
+                IList<InstrumentSearchReply> searchData 
+                    = instruments.Select(i => new InstrumentSearchReply { Name = i.Name, Payout = i.Payout }).ToList();
+                
+                Sender.Tell(searchData, Self);
             }
         }
 

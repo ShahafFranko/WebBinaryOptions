@@ -8,13 +8,12 @@
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOption.DAL\obj\Debug\BinaryOptions.DAL.csprojResolveAssemblyReference.cache
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOption.DAL\obj\Debug\BinaryOption.DAL.dll
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOption.DAL\obj\Debug\BinaryOption.DAL.pdb
-C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\BinaryOption.DAL.dll.config
-C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\BinaryOption.DAL.dll
-C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\BinaryOption.DAL.pdb
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\EntityFramework.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\EntityFramework.xml
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\obj\Debug\BinaryOptions.DAL.csprojResolveAssemblyReference.cache
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\obj\Debug\BinaryOption.DAL.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\obj\Debug\BinaryOption.DAL.pdb
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\BinaryOption.DAL.dll.config
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\BinaryOption.DAL.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOption.DAL\bin\Debug\BinaryOption.DAL.pdb

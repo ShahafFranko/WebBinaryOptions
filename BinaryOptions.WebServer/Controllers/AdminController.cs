@@ -59,6 +59,18 @@ namespace BinaryOptions.WebServer.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
+                [System.Web.Mvc.HttpGet]
+        public async Task<JsonResult> SearchInstruments([FromUri]InstrumentsSearchModel searchModel)
+        {
+            // First lets create path to our handler.
+            string searchHandlerPath = Global.Protocol.GenerateTcpPath("SearchRequestsHandler");
+
+            var request = new InstrumentSearchRequest(searchModel.Name, searchModel.Payout, searchModel.Disabled);
+            var response = await Global.ActorSystem.ActorSelection(searchHandlerPath).Ask<IList<InstrumentSearchReply>>(request);
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
         [System.Web.Mvc.HttpGet]
         public async Task<JsonResult> TradingData()
         {

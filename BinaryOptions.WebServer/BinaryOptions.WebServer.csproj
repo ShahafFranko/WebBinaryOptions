@@ -344,6 +344,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\TradingHub.cs" />
+    <Compile Include="Models\InstrumentsSearchModel.cs" />
     <Compile Include="Models\AccountDepositModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\AccountModel.cs" />

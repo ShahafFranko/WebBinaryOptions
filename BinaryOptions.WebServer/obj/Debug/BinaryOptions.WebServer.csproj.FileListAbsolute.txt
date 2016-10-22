@@ -74,8 +74,6 @@ c:\users\shahaf\documents\visual studio 2013\Projects\BinaryOptions\BinaryOption
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.WebServer\obj\Debug\BinaryOptions.WebServer.pdb
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.WebServer\bin\BinaryOption.OptionServer.Contract.dll
 \\vmware-host\Shared Folders\Desktop\web\Final project\WebBinaryOptions\BinaryOptions.WebServer\bin\BinaryOption.OptionServer.Contract.pdb
-C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\Newtonsoft.Json.dll
-C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\obj\Debug\BinaryOptions.WebServer.csprojResolveAssemblyReference.cache
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\BinaryOptions.WebServer.dll.config
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\BinaryOptions.WebServer.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\BinaryOptions.WebServer.pdb
@@ -90,6 +88,7 @@ C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\Microsoft
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\Microsoft.Owin.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\Microsoft.Owin.Security.dll
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\Newtonsoft.Json.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\Owin.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\System.Collections.Immutable.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\System.Net.Http.Formatting.dll
@@ -120,5 +119,6 @@ C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\System.We
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\System.Net.Http.Formatting.xml
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\System.Web.Http.xml
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\bin\System.Web.Http.WebHost.xml
+C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\obj\Debug\BinaryOptions.WebServer.csprojResolveAssemblyReference.cache
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\obj\Debug\BinaryOptions.WebServer.dll
 C:\Users\Shahaf\Documents\WebBinaryOptions\BinaryOptions.WebServer\obj\Debug\BinaryOptions.WebServer.pdb

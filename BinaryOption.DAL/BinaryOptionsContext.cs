@@ -21,6 +21,7 @@ namespace BinaryOptions.DAL
 
         public DbSet<Position> Positions { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Instrument> Instruments { get; set; }
 
         public static BinaryOptionsContext Create()
         {

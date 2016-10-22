@@ -45,6 +45,7 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ClosePositionCommand.cs" />
     <Compile Include="DTO\InstrumentRatesReply.cs" />
+    <Compile Include="DTO\InstrumentsSearchReply.cs" />
     <Compile Include="DTO\OpenPositionReply.cs" />
     <Compile Include="DTO\AccountReply.cs" />
     <Compile Include="DTO\InstrumentsReply.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Requests\AccountRequest.cs" />
     <Compile Include="Requests\CreateAccountRequest.cs" />
     <Compile Include="Requests\InstrumentRatesRequest.cs" />
+    <Compile Include="Requests\InstrumentSearchRequest.cs" />
     <Compile Include="Requests\InstrumentsRequest.cs" />
     <Compile Include="Requests\IRequest.cs" />
     <Compile Include="Requests\LoginRequest.cs" />

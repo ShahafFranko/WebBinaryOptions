@@ -92,6 +92,29 @@ app.controller('adminController', ['$scope', 'hubProxy', '$http', function ($sco
         });
     };
 
+    $scope.instrumentsQueryParam = {
+        name: null,
+        payout: 0,
+        disabled: true
+    };
+
+    $scope.searchInstruments = function () {
+        $scope.instruments = [];
+        $http({
+            method: 'GET',
+            url: '/admin/SearchInstruments',
+            params: {
+                name: $scope.instrumentsQueryParam.name,
+                payout: $scope.instrumentsQueryParam.payout,
+                disabled: $scope.instrumentsQueryParam.disabled
+            }
+        }).then(function successCallback(response) {
+            $scope.instruments = response.data;
+        }, function errorCallback(response) {
+            alertify.error("Oh crap, search failed.");
+        });
+    };
+
     $scope.getWinLoseData = function () {
         $http({
             method: 'GET',

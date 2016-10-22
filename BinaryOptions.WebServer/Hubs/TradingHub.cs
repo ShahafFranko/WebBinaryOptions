@@ -31,7 +31,6 @@ namespace BinaryOptions.WebServer.Hubs
 
         public async Task<IList<string>> GetInstruments()
         {
-            //var reply = await Global.CommandBus.Ask<IReply>(new RequestWrapper("RatesService", new InstrumentsRequest()));
             string ratesActorPath = Global.Protocol.GenerateTcpPath("RatesService");
             IReply reply = await Global.ActorSystem.ActorSelection(ratesActorPath).Ask<IReply>(new InstrumentsRequest());
 

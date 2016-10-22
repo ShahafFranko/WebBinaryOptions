@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BinaryOptions.DAL.Data;
+using BinaryOptions.DAL;
 
 namespace BinaryOption.DAL.Repositories
 {
@@ -13,11 +14,10 @@ namespace BinaryOption.DAL.Repositories
 
         public InstrumentRepository()
         {
-            m_instruments = new Dictionary<Guid, Instrument>();
-            m_instruments.Add(Guid.NewGuid(), new Instrument("EURUSD", 1.0, 2.0, 0.6));
-            m_instruments.Add(Guid.NewGuid(), new Instrument("EURGBP", 1.1, 2.5, 0.67));
-            m_instruments.Add(Guid.NewGuid(), new Instrument("GBPUSD", 1.2, 2.4, 0.66));
-            m_instruments.Add(Guid.NewGuid(), new Instrument("USDJPY", 14.1, 23.23, 0.62));
+            using(var ctx = BinaryOptionsContext.Create())
+            {
+                m_instruments = ctx.Instruments.Where(i => i.IsEnabled).ToDictionary(item => item.Id, item => item);
+            }
         }
 
         public Instrument GetInstrument(Guid instrumentId)
@@ -47,7 +47,17 @@ namespace BinaryOption.DAL.Repositories
         {
             if (m_instruments.ContainsKey(instrument.Id))
             {
-                m_instruments[instrument.Id] = instrument;                
+                using (var ctx = BinaryOptionsContext.Create())
+                {
+                    Instrument instrumentToUpdate = ctx.Instruments.Find(instrument.Id);
+                    // Update local cache.
+                    m_instruments[instrument.Id] = instrument;
+                    
+                    // Update db.
+                    instrumentToUpdate.Rate = instrument.Rate;
+                    ctx.SaveChanges();
+                }
+                                
             }
         }
     }

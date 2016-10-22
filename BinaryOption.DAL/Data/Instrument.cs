@@ -1,24 +1,33 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BinaryOptions.DAL.Data
 {
     public class Instrument
     {
-        public Instrument(string name, double min, double max, double payout)
+        public Instrument()
+        {
+
+        }
+
+        public Instrument(string name, double min, double max, double payout, bool isEnabled = true)
         {
             Id = Guid.NewGuid();
             Name = name;
             Min = min;
             Max = max;
             Payout = payout;
+            IsEnabled = isEnabled;
         }
 
-        public Guid Id { get; private set; }
-        public string Name { get; private set; }
-        public double Min { get; private set; }
-        public double Max { get; private set; }
-        public double Rate { get; private set; }
-        public double Payout { get; private set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public double Min { get; set; }
+        public double Max { get; set; }
+        public double Rate { get; set; }
+        public double Payout { get; set; }
+        public bool IsEnabled { get; set; }
 
         public void Update(double rate) 
         {
