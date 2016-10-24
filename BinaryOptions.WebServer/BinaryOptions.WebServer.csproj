@@ -204,6 +204,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\videos\WhatAreBinaryOptions.mp4" />
+    <Content Include="Content\videos\WhatAreBinaryOptions1.mp4" />
     <Content Include="D3 LICENSE.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
